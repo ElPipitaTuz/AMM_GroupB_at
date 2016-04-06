@@ -1,16 +1,21 @@
 
 body {
-    font-size: 15px;
+    font-size: 25px;
     font-family: "Open Sans", Arial, sans-serif;
     color: black;
-    background-color:lightgoldenrodyellow;
+    background-color:white;
 }
 
-h1,h2,h3,h4 {
+h1 {
+    font-size: 60px;
+    background-image: url(images/scudetto_bacuccu.jpg);
+}
+
+h2,h3,h4 {
     color: red;
     background-color: #cccccc;
     font-weight: bold;
-    font-family: "Comic sans ms", Arial, sans-serif;
+    font-family: "Arial",sans-serif;
 }
 
 
@@ -37,14 +42,6 @@ a:hover {
 {
     border-style: outset;
     border-color: red;
-    
-}
-
-table
-{
-    border-style: outset;
-    border-collapse: collapse;
-    color: red;
     margin-bottom: 4px;
     margin-top: 4px;
     margin-right: 3px;
@@ -52,6 +49,32 @@ table
     
 }
 
+table
+{
+    border-style: outset;
+    border-collapse: collapse;
+    color: black;
+    margin-bottom: 6px;
+    margin-top: 6px;
+    margin-right: 5px;
+    margin-left: 5px;
+    
+}
+
 nav {
-    background-color: pink;
+    background-color: #cccccc;
+    border-style: outset;  
+}
+
+nav p {
+    color: #33ff33;
+}
+
+th {
+    font-size: 35px;
+    background-color: #cccccc; 
+}
+
+td {
+   border-style: ridge;
 }
