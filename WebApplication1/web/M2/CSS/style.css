@@ -3,8 +3,7 @@ body {
     font-size: 25px;
     font-family: "Apple LiGothic", Arial, sans-serif;
     color: black;
-    background-image: 
-        url(../images_web/wrinkled_white_paper_background_1800x1600.jpg);
+    background-color: #ffffff;
 }
 
 h1 {
@@ -25,14 +24,8 @@ h1 {
 h2,h3,h4 {
     color: red;
     background-color: white;
-    border-style: double;
-    border-color: #cc0000;
-    margin-bottom: 5px;
-    margin-top: 5px;
-    margin-right: 4px;
-    margin-left: 4px;
     font-weight: bold;
-    font-family: "Impact",sans-serif;
+    font-family: "Helvetica",sans-serif;
 }
 
 
@@ -79,7 +72,7 @@ table
 }
 
 nav {
-    background-color: #cccccc;
+    background-color: #f3f3f3;
     border-style: outset;
     color: navy;
 }
