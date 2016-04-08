@@ -93,6 +93,13 @@ th {
 
 td {
    border-style: ridge;
-   background-color:#cccccc; 
    color:red;
+}
+
+.pari {
+    background: #999999;
+}
+
+.dispari {
+    background: #cccccc;
 }
