@@ -1,6 +1,6 @@
 
 body {
-    font-size: 25px;
+    font-size: 30px;
     font-family: "Apple LiGothic", Arial, sans-serif;
     color: black;
     background-color: #ffffff;
@@ -9,23 +9,27 @@ body {
 h1 {
     font-size: 60px;
     font-family: "Impact",sans-serif;
-    background-color: white;
-    background-image: url(../images_web/scudetto_bacuccu.jpg);
-    background-position: right;
-    background-repeat: no-repeat;
+    background-color: #ededed;
     border-style: outset;
-    border-color: #cc0000;
+    border-color: black;
     margin-bottom: 5px;
-    margin-top: 5px;
-    margin-right: 4px;
-    margin-left: 4px;
+    margin-top: 25px;
+    margin-right: 8px;
+    margin-left: 25px;
+    display: inline;
+}
+h1 p {
+    margin-left: 25px;
+    border-style: outset;
+    border-color: black;
 }
 
 h2,h3,h4 {
     color: red;
-    background-color: white;
     font-weight: bold;
     font-family: "Helvetica",sans-serif;
+    display: inline;
+
 }
 
 
@@ -71,12 +75,6 @@ table
     
 }
 
-nav {
-    background-color: #f3f3f3;
-    border-style: outset;
-    color: navy;
-}
-
 
 th {
     font-size: 35px;
@@ -96,4 +94,48 @@ td {
 
 .dispari {
     background: #cccccc;
+}
+
+@media screen {
+    .header{
+        height: 200px;
+        background-image: url(../images_web/scudetto_bacuccu.jpg);
+        background-repeat: no-repeat;
+        background-position: right;
+        background-size: 200px;
+    }
+    
+    .contenuto{
+        height: 400px;
+        width: 1150px;
+        float: right;
+        margin-left: 5px;
+    }
+    
+    .scorciatoie{
+        height: 250px;
+        width: 200px;
+        float: left;
+        background-image: url(../images_web/wrinkled_white_paper_background_1800x1600.jpg);
+    border-style: outset;
+    border-color: black;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    margin-right: 10px;
+    margin-left: 10px;
+    }
+    
+    .riservato{
+        height: 255px;
+        width: 200px;
+        float: left;
+        background-image: url(../images_web/wrinkled_white_paper_background_1800x1600.jpg);
+        border-style: outset;
+    border-color: black;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    margin-right: 10px;
+    margin-left: 10px;
+         }
+    
 }
