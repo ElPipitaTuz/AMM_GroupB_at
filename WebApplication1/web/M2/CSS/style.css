@@ -15,10 +15,8 @@ h1 {
     margin-left: 25px;
     display: inline;
 }
-h1 p {
+.header p {
     margin-left: 25px;
-    border-style: outset;
-    border-color: black;
 }
 
 h2,h3,h4 {
@@ -26,7 +24,6 @@ h2,h3,h4 {
     font-weight: bold;
     font-family: "Helvetica",sans-serif;
     display: inline;
-
 }
 
 
@@ -93,7 +90,7 @@ td {
     background: #cccccc;
 }
 
-@media screen {
+/*@media screen, handheld and (min-widht: 1024px) {
     .header{
         height: 200px;
         background-image: url(../images_web/scudetto_bacuccu.jpg);
@@ -135,4 +132,75 @@ td {
     margin-left: 10px;
          }
     
-}
+} */
+
+
+@media screen, handheld and (max-widht: 480px) {
+    
+    body {
+    font-size: 13px;
+    font-family: "Apple LiGothic", Arial, sans-serif;
+    color: black;
+    background-color: #ffffff;
+    }
+   
+    h1 {
+    font-size: 28px;
+    font-family: "Impact",sans-serif;
+    margin-bottom: 5px;
+    margin-top: 25px;
+    margin-right: 8px;
+    margin-left: 25px;
+    display: inline;
+    }
+
+    .header p {
+    margin-left: 15px;
+    font-size: 15px;
+    }
+
+    .header{
+        height: 50px;
+    }
+    
+    nav ul li, nav p{
+        font-size: 16px;
+        float: left;
+        margin-right: 60px;
+        padding-bottom: 60px;
+        
+    }
+    
+    .scorciatoie{
+        height: 40px;
+        width: 400px;
+        background-image: url(../images_web/wrinkled_white_paper_background_1800x1600.jpg);
+        border-style: outset;
+        border-color: black;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        margin-left: 10px;
+        padding-bottom: 10px;
+    }
+   
+    .contenuto{
+        height: 150px;
+        width: 400px;
+        margin-left: 15px;
+        margin-bottom: 125px;
+    }
+    
+    .riservato{
+        height: 65px;
+        width: 400px;
+        background-image: url(../images_web/wrinkled_white_paper_background_1800x1600.jpg);
+        border-style: outset;
+        border-color: black;
+        margin-bottom: 20px;
+        margin-top: 40px;
+        margin-right: 10px;
+        margin-left: 10px;
+        padding-bottom: 10px;
+         }
+    
+} 
