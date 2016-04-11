@@ -99,7 +99,7 @@ td {
     background: #cccccc;
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1024px) {           /*grande*/
     
     body {
     font-size: 30px;
@@ -193,7 +193,7 @@ td {
 } 
 
 @media only screen and (min-width: 480px)
-and (max-width: 1024px) {
+and (max-width: 1024px) {                                   /*medio*/
     
     body {
     font-size: 16px;
@@ -283,7 +283,7 @@ and (max-width: 1024px) {
 
 
 @media only screen and (min-width: 100px)
-                        and (max-width: 480px) {
+                        and (max-width: 480px) {              /*piccolo*/
     
     body {
     font-size: 12px;
