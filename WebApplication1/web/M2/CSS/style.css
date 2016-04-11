@@ -41,6 +41,21 @@ a:hover {
     font-weight: bold;
 }
 
+form {
+  
+    text-align: left;
+}
+
+label, input {
+    margin-top: 50px;
+}
+
+button {
+    margin-left: 120px;
+    color: white;
+    background-color: red;
+}
+
 #usrnm,#psswrd,#objURL,#objname,#objDescr,#objPrice,#objNumber 
 {
     border-style: outset;
@@ -49,7 +64,6 @@ a:hover {
     margin-top: 4px;
     margin-right: 3px;
     margin-left: 3px;
-    display: block;
     
 }
 
@@ -90,27 +104,38 @@ td {
     body {
     font-size: 30px;
     background-image: url(../images_web/back.jpg);
+    background-size: 1400px;
     }
     
     h1 {
-    font-size: 60px;
+    font-size: 58px;
     margin-bottom: 5px;
     margin-top: 25px;
     margin-right: 200px;
-    margin-left: 25px;
+    margin-left: 4px;
     }
     
-    h2,h3,h4 {
-    display: inline;
+    h2,h3 {
     margin-left: 65px;
     }
     
+    h2,h3,h4 {
+        background-image: url(../images_web/Header-black.png);
+        border-style: outset;
+        padding-top: 8px;
+        padding-left: 8px;
+        padding-right: 8px;
+        display: inline;
+             }
+    
     th {
-    font-size: 35px;
+    font-size: 39px;
     }
     
     form {
-        margin-left: 350px;
+        font-size: 30px;
+        margin-left: 320px;
+        margin-top: 90px;
     }
     
     .header{
@@ -154,15 +179,116 @@ td {
     margin-right: 10px;
     margin-left: 10px;
          }
+         
+    .riservato h4 {
+             display: block;
+             font-size: 20px;
+    }     
+    
+    table {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
     
 } 
+
+@media only screen and (min-width: 480px)
+and (max-width: 1024px) {
+    
+    body {
+    font-size: 16px;
+    background-image: url(../images_web/back.jpg);
+    background-size: 800px;
+    }
+    
+    h1 {
+    font-size: 37px;
+    margin-bottom: 5px;
+    margin-top: 25px;
+    margin-right: 50px;
+    margin-left: 1px;
+    
+    }
+    
+    h2,h3,h4 {
+        background-image: url(../images_web/Header-black.png);
+        border-style: outset;
+        margin-top: 8px;
+        padding-top: 8px;
+        padding-left: 8px;
+        padding-right: 8px;
+        display: inline;
+             }
+    
+    .header{
+        height: 130px;
+        background-image: url(../images_web/bg_header.gif);
+        background-repeat: no-repeat;
+        background-size: 500px;
+        margin-left: 120px;
+    }
+    
+    .scorciatoie{
+        height: 60px;
+        width: 650px;
+        background-image: url(../images_web/wrinkled_white_paper_background_1800x1600.jpg);
+        border-style: outset;
+        border-color: black;
+        margin-bottom: 20px;
+        margin-top: 45px;
+        margin-left: 60px;
+        padding-bottom: 10px;
+    }
+    
+    nav ul li, nav p{
+        font-size: 22px;
+        float: left;
+        margin-right: 90px;
+        padding-bottom: 60px;
+        
+    }
+    
+    .contenuto{
+        height: 220px;
+        width: 600px;
+        margin-top: 55px; 
+        margin-left: 130px;
+        margin-bottom: 125px;
+    }
+    
+    .riservato{
+        height: 105px;
+        width: 650px;
+        background-image: url(../images_web/wrinkled_white_paper_background_1800x1600.jpg);
+        border-style: outset;
+        border-color: black;
+        margin-bottom: 40px;
+        margin-top: 20px;
+        margin-right: 10px;
+        margin-left: 60px;
+        padding: 10px;
+         }
+    
+         table {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    
+     form {
+        margin-left: 160px;
+        margin-top: 60px;
+    }
+    
+}
 
 
 @media only screen and (min-width: 100px)
                         and (max-width: 480px) {
     
     body {
-    font-size: 13px;
+    font-size: 12px;
+    background-image: url(../images_web/back.jpg);
+    background-size: 550px;
     }
    
     h1 {
@@ -173,6 +299,15 @@ td {
     margin-left: 25px;
     display: inline;
     }
+    
+    h2,h3,h4 {
+        background-image: url(../images_web/Header-black.png);
+        border-style: outset;
+        padding-top: 8px;
+        padding-left: 8px;
+        padding-right: 8px;
+        display: inline;
+             }
 
     .header p {
     margin-left: 15px;
@@ -184,6 +319,7 @@ td {
         background-image: url(../images_web/bg_header.gif);
         background-repeat: no-repeat;
         background-size: 390px;
+        margin-left: 40px;
     }
     
     nav ul li, nav p{
@@ -196,6 +332,7 @@ td {
     
     form {
         margin-left: 65px;
+        margin-top: 20px;
     }
     
     .scorciatoie{
@@ -214,8 +351,9 @@ td {
         height: 150px;
         width: 400px;
         margin-top: 55px; 
-        margin-left: 15px;
-        margin-bottom: 125px;
+        margin-left: 55px;
+        margin-bottom: 100px;
+        display: block;
     }
     
     .riservato{
@@ -231,4 +369,10 @@ td {
         padding: 10px;
          }
     
+         table {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    
+                        
 } 
