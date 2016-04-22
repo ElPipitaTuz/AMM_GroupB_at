@@ -1,0 +1,20 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package pack_M3;
+
+/**
+ *
+ * @author albertotuzzi
+ */
+public class Oggetti {
+    
+    private String objName;
+    private String objURL;
+    private String objDescr;
+    private float objPrice;
+    private int objNumber;
+    
+}
