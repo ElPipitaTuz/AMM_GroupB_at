@@ -9,12 +9,6 @@ package pack_M3;
  *
  * @author albertotuzzi
  */
-public class Oggetti {
-    
-    private String objName;
-    private String objURL;
-    private String objDescr;
-    private float objPrice;
-    private int objNumber;
+public class UtenteFactory {
     
 }
