@@ -21,7 +21,7 @@ public class BacuccuFactory {
         return costr;
     }
     
-    private ArrayList<Articolo> listaArticoli = new ArrayList<Articolo>();
+    public ArrayList<Articolo> listaArticoli = new ArrayList<Articolo>();
     
     private ArrayList<Utente_cliente> listaClienti = new ArrayList<Utente_cliente>();
   
@@ -32,103 +32,103 @@ public class BacuccuFactory {
     
     //articoli//
         Articolo articolo_1 = new Articolo();
-        articolo_1.objName = "Home Kit";
-        articolo_1.objURL = "lol";
-        articolo_1.objDescr = "pippo";
-        articolo_1.objPrice = 89.90;
-        articolo_1.objNumber = 233;
+        articolo_1.setobjName("Home Kit");
+        articolo_1.setobjURL("lol");
+        articolo_1.setobjDescr("pippo");
+        articolo_1.setobjPrice(89.90);
+        articolo_1.setobjNumber(233);
         listaArticoli.add(articolo_1);
         
         Articolo articolo_2 = new Articolo();
-        articolo_2.objName = "Away Kit";
-        articolo_2.objURL = "lol";
-        articolo_2.objDescr = "pippo";
-        articolo_2.objPrice = 89.90;
-        articolo_2.objNumber = 212;
+        articolo_2.setobjName("Away Kit");
+        articolo_2.setobjURL("lol");
+        articolo_2.setobjDescr("pippo");
+        articolo_2.setobjPrice(89.90);
+        articolo_2.setobjNumber(212);
         listaArticoli.add(articolo_2);
         
         Articolo articolo_3 = new Articolo();
-        articolo_3.objName = "Match Bottoms";
-        articolo_3.objURL = "lol";
-        articolo_3.objDescr = "pippo";
-        articolo_3.objPrice = 35.90;
-        articolo_3.objNumber = 165;
+        articolo_3.setobjName("Match Bottoms");
+        articolo_3.setobjURL("lol");
+        articolo_3.setobjDescr("pippo");
+        articolo_3.setobjPrice(35.90);
+        articolo_3.setobjNumber(165);
         listaArticoli.add(articolo_3);
 
         Articolo articolo_4 = new Articolo();
-        articolo_4.objName = "Match socks";
-        articolo_4.objURL = "lol";
-        articolo_4.objDescr = "pippo";
-        articolo_4.objPrice = 9.90;
-        articolo_4.objNumber = 132;
+        articolo_4.setobjName("Match socks");
+        articolo_4.setobjURL("lol");
+        articolo_4.setobjDescr("pippo");
+        articolo_4.setobjPrice(9.90);
+        articolo_4.setobjNumber(132);
         listaArticoli.add(articolo_4);
         
         Articolo articolo_5 = new Articolo();
-        articolo_5.objName = "T-shirt";
-        articolo_5.objURL = "lol";
-        articolo_5.objDescr = "pippo";
-        articolo_5.objPrice = 25.90;
-        articolo_5.objNumber = 302;
+        articolo_5.setobjName("T-shirt");
+        articolo_5.setobjURL("lol");
+        articolo_5.setobjDescr("pippo");
+        articolo_5.setobjPrice(25.90);
+        articolo_5.setobjNumber(302);
         listaArticoli.add(articolo_5);
         
         Articolo articolo_6 = new Articolo();
-        articolo_6.objName = "Key-keeper";
-        articolo_6.objURL = "lol";
-        articolo_6.objDescr = "pippo";
-        articolo_6.objPrice = 3.90;
-        articolo_6.objNumber = 404;
+        articolo_6.setobjName("Key-keeper");
+        articolo_6.setobjURL("lol");
+        articolo_6.setobjDescr("pippo");
+        articolo_6.setobjPrice(3.90);
+        articolo_6.setobjNumber(404);
         listaArticoli.add(articolo_6);
         
         Articolo articolo_7 = new Articolo();
-        articolo_7.objName = "Bathroom Paper";
-        articolo_7.objURL = "lol";
-        articolo_7.objDescr = "pippo";
-        articolo_7.objPrice = 1.90;
-        articolo_7.objNumber = 132;
+        articolo_7.setobjName("Bathroom Paper");
+        articolo_7.setobjURL("lol");
+        articolo_7.setobjDescr("pippo");
+        articolo_7.setobjPrice(1.90);
+        articolo_7.setobjNumber(132);
         listaArticoli.add(articolo_7);
         
         Articolo articolo_8 = new Articolo();
-        articolo_8.objName = "Zippo lighter";
-        articolo_8.objURL = "lol";
-        articolo_8.objDescr = "pippo";
-        articolo_8.objPrice = 6.90;
-        articolo_8.objNumber = 173;
+        articolo_8.setobjName("Zippo lighter");
+        articolo_8.setobjURL("lol");
+        articolo_8.setobjDescr("pippo");
+        articolo_8.setobjPrice(6.90);
+        articolo_8.setobjNumber(173);
         listaArticoli.add(articolo_8);
 
         //utenti clienti//
         
         Utente_cliente cliente_1 = new Utente_cliente();
-        cliente_1.nomeCliente = "Joel";
-        cliente_1.cognomeCliente = "Zimmerman";
-        cliente_1.cf = 01;
-        cliente_1.usrnm = "deadmau5";
-        cliente_1.psswrd = 01;
+        cliente_1.setnomeCliente("Joel");
+        cliente_1.setcognomeCliente("Zimmerman");
+        cliente_1.setcf(01);
+        cliente_1.setusrnm("deadmau5");
+        cliente_1.setpsswrd(01);
         listaClienti.add(cliente_1);
         
         Utente_cliente cliente_2 = new Utente_cliente();
-        cliente_2.nomeCliente = "Sonny";
-        cliente_2.cognomeCliente = "Moore";
-        cliente_2.cf = 02;
-        cliente_2.usrnm = "skrillex";
-        cliente_2.psswrd = 02;
+        cliente_2.setnomeCliente("Sonny");
+        cliente_2.setcognomeCliente("Moore");
+        cliente_2.setcf(02);
+        cliente_2.setusrnm("skrillex");
+        cliente_2.setpsswrd(02);
         listaClienti.add(cliente_2);
         
         //utenti venditori//
         
         Utente_venditore vend_1 = new Utente_venditore();
-        vend_1.nomeVenditore = "Alberto";
-        vend_1.cognomeVenditore = "Tuzzi";
-        vend_1.cf = 03;
-        vend_1.usrnm = "a.tuzzi";
-        vend_1.psswrd = 03;
+        vend_1.setnomeVenditore("Alberto");
+        vend_1.setcognomeVenditore("Tuzzi");
+        vend_1.setcf(03);
+        vend_1.setusrnm("a.tuzzi");
+        vend_1.setpsswrd(03);
         listaVenditori.add(vend_1);
         
         Utente_venditore vend_2 = new Utente_venditore();
-        vend_2.nomeVenditore = "Renato";
-        vend_2.cognomeVenditore = "Diana";
-        vend_2.cf = 04;
-        vend_2.usrnm = "r.diana";
-        vend_2.psswrd = 04;
+        vend_2.setnomeVenditore("Renato");
+        vend_2.setcognomeVenditore("Diana");
+        vend_2.setcf(04);
+        vend_2.setusrnm("r.diana");
+        vend_2.setpsswrd(04);
         listaVenditori.add(vend_2);
         
     }

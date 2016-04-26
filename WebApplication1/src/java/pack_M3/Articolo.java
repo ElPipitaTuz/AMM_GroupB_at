@@ -27,8 +27,52 @@ public class Articolo {
     public String objDescr;
     public double objPrice;
     public int objNumber;
+    
+    //metodi//
+
+    public String getobjName(){
+        return objName;
+    }
+
+    public void setobjName(String objName){
+        this.objName = objName;
+    }
+
+    public String getobjURL(){
+        return objURL;
+    } 
+    
+    public void setobjURL(String objURL){
+        this.objURL = objURL;  
+    }
+
+    public String getobjDescr(){
+        return objDescr;
+    } 
+    
+    public void setobjDescr(String objDescr){
+        this.objDescr = objDescr;  
+    }
+
+    public double getobjPrice(){
+        return objPrice;
+    }
+
+    public void setobjPrice(double objPrice){
+        this.objPrice = objPrice;
+    }
+
+    public int getobjNumber(){
+        return objNumber;
+    }
+
+    public void setobjNumber(int objNumber){
+        this.objNumber = objNumber;
+    }
   
     
 }
 
+
+    
 

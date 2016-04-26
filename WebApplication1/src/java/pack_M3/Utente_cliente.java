@@ -17,4 +17,46 @@ public class Utente_cliente {
     public String usrnm;
     int psswrd;
     
+    //metodi//
+    
+    public String getnomeCliente(){
+        return nomeCliente;
+    }
+
+    public void setnomeCliente(String nomeCliente){
+        this.nomeCliente = nomeCliente;
+    }
+    
+    public String getconomeCliente(){
+        return cognomeCliente;
+    }
+
+    public void setcognomeCliente(String cognomeCliente){
+        this.cognomeCliente = cognomeCliente;
+    }
+    
+    public String getusrnm(){
+        return usrnm;
+    }
+
+    public void setusrnm(String usrnm){
+        this.usrnm = usrnm;
+    }
+    
+    public int getcf(){
+        return cf;
+    }
+
+    public void setcf(int cf){
+        this.cf = cf;
+    }
+    
+    public int getpsswrd(){
+        return psswrd;
+    }
+
+    public void setpsswrd(int psswrd){
+        this.psswrd = psswrd;
+    }
+    
 }
