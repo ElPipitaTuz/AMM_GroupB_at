@@ -27,10 +27,10 @@ public class BacuccuFactory {
   
     private ArrayList<Utente_venditore> listaVenditori = new ArrayList<Utente_venditore>();
     
-    
+    //costruttore
     private BacuccuFactory(){
     
-    //articoli//
+    //articoli
         Articolo articolo_1 = new Articolo();
         articolo_1.setobjName("Home Kit");
         articolo_1.setobjURL("lol");
@@ -142,7 +142,7 @@ public class BacuccuFactory {
     {
         for(Utente_cliente c : listaClienti)
         {
-            if(c.cf == cf_in)
+            if(c.getcf() == cf_in)
                 return c;
         }
         
@@ -160,7 +160,7 @@ public class BacuccuFactory {
     {
         for(Utente_venditore v : listaVenditori)
         {
-            if(v.cf == cf_in)
+            if(v.getcf() == cf_in)
                 return v;
         }
         

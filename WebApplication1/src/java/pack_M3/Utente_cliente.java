@@ -11,11 +11,11 @@ package pack_M3;
  */
 public class Utente_cliente {
     
-    public String nomeCliente;
-    public String cognomeCliente;
-    public int cf;
-    public String usrnm;
-    int psswrd;
+    private String nomeCliente;
+    private String cognomeCliente;
+    private int cf;
+    private String usrnm;
+    private int psswrd;
     
     //metodi//
     

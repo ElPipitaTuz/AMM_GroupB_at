@@ -20,13 +20,13 @@ public class Articolo {
 //        ArticoloId_key_keeper,
 //        ArticoloId_paper,
 //        ArticoloId_Zippo,
-//    } 
+//     
     
-    public String objName;
-    public String objURL;
-    public String objDescr;
-    public double objPrice;
-    public int objNumber;
+    private String objName;
+    private String objURL;
+    private String objDescr;
+    private double objPrice;
+    private int objNumber;
     
     //metodi//
 

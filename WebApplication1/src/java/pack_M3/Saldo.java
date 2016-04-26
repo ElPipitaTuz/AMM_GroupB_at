@@ -11,6 +11,6 @@ package pack_M3;
  */
 public class Saldo {
     
-    private float saldo;
+    private double saldo;
     
 }
