@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author albertotuzzi
  */
-@WebServlet(name = "Login", urlPatterns = {"M3/Login"})
+@WebServlet(name = "Login", urlPatterns = {"/Login"})
 public class Login extends HttpServlet {
 
     /**
@@ -37,11 +37,11 @@ public class Login extends HttpServlet {
         
         HttpSession session = request.getSession(true);
         
-        if(request.getParameter("Submit") != null)
+        if(request.getParameter("submit") != null)
         {
             // Preleva i dati inviati
-            String username = request.getParameter("Username");
-            String password = request.getParameter("Password");
+            String username = request.getParameter("usrnm");
+            String password = request.getParameter("psswrd");
             
             ArrayList<Utente_cliente> listaClienti = BacuccuFactory.getInstance().getClienteList();
             for(Utente_cliente c : listaClienti)
@@ -52,7 +52,7 @@ public class Login extends HttpServlet {
                     session.setAttribute("loggedIn", true);
                  
                         request.setAttribute("cliente", c);
-                        request.getRequestDispatcher("da scrivere.jsp").forward(request, response);  
+                        request.getRequestDispatcher("").forward(request, response);  
                                     
                 }
                 
@@ -67,14 +67,14 @@ public class Login extends HttpServlet {
                     session.setAttribute("loggedIn", true);
                  
                         request.setAttribute("venditore", v);
-                        request.getRequestDispatcher("da scrivere.jsp").forward(request, response);  
+                        request.getRequestDispatcher("").forward(request, response);  
                                     
                 }
                 
             }
             
         }
-        request.getRequestDispatcher("form_login.jsp").forward(request, response);
+        request.getRequestDispatcher("Web Pages/M3/login.jsp").forward(request, response);
  
     }
 
