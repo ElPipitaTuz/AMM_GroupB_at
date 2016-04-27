@@ -116,7 +116,7 @@ public class BacuccuFactory {
         cliente_1.setcognomeCliente("Zimmerman");
         cliente_1.setcf(01);
         cliente_1.setusrnm("deadmau5");
-        cliente_1.setpsswrd(01);
+        cliente_1.setpsswrd("strobe");
         cliente_1.setSaldo(s1);
         listaClienti.add(cliente_1);
         
@@ -125,7 +125,7 @@ public class BacuccuFactory {
         cliente_2.setcognomeCliente("Moore");
         cliente_2.setcf(02);
         cliente_2.setusrnm("skrillex");
-        cliente_2.setpsswrd(02);
+        cliente_2.setpsswrd("smns");
         cliente_2.setSaldo(s2);
         listaClienti.add(cliente_2);
         
@@ -136,7 +136,7 @@ public class BacuccuFactory {
         vend_1.setcognomeVenditore("Tuzzi");
         vend_1.setcf(03);
         vend_1.setusrnm("a.tuzzi");
-        vend_1.setpsswrd(03);
+        vend_1.setpsswrd("lol");
         vend_1.setSaldo(s3);
         listaVenditori.add(vend_1);
         
@@ -145,7 +145,7 @@ public class BacuccuFactory {
         vend_2.setcognomeVenditore("Diana");
         vend_2.setcf(04);
         vend_2.setusrnm("r.diana");
-        vend_2.setpsswrd(04);
+        vend_2.setpsswrd("lel");
         vend_2.setSaldo(s4);
         listaVenditori.add(vend_2);
         

@@ -15,7 +15,7 @@ public class Utente_venditore {
     private String cognomeVenditore;
     private int cf;
     private String usrnm;
-    private int psswrd;
+    private String psswrd;
     private Saldo saldo;
     
     //cotruttore
@@ -26,7 +26,7 @@ public class Utente_venditore {
         cognomeVenditore="";
         cf=0;
         usrnm="";
-        psswrd=0;
+        psswrd="";
     
     }
     
@@ -64,11 +64,11 @@ public class Utente_venditore {
         this.cf = cf;
     }
     
-    public int getpsswrd(){
+    public String getpsswrd(){
         return psswrd;
     }
 
-    public void setpsswrd(int psswrd){
+    public void setpsswrd(String psswrd){
         this.psswrd = psswrd;
     }
     
