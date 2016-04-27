@@ -16,6 +16,19 @@ public class Utente_venditore {
     private int cf;
     private String usrnm;
     private int psswrd;
+    private Saldo saldo;
+    
+    //cotruttore
+    
+    public Utente_venditore(){
+    
+        nomeVenditore="";
+        cognomeVenditore="";
+        cf=0;
+        usrnm="";
+        psswrd=0;
+    
+    }
     
     //metodi//
     
@@ -57,6 +70,14 @@ public class Utente_venditore {
 
     public void setpsswrd(int psswrd){
         this.psswrd = psswrd;
+    }
+    
+    public Saldo getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(Saldo saldo) {
+        this.saldo = saldo;
     }
     
 }

@@ -16,6 +16,20 @@ public class Utente_cliente {
     private int cf;
     private String usrnm;
     private int psswrd;
+    private Saldo saldo;
+    
+    //cotruttore
+    
+    public Utente_cliente(){
+    
+        nomeCliente="";
+        cognomeCliente="";
+        cf=0;
+        usrnm="";
+        psswrd=0;
+    
+    }
+    
     
     //metodi//
     
@@ -57,6 +71,14 @@ public class Utente_cliente {
 
     public void setpsswrd(int psswrd){
         this.psswrd = psswrd;
+    }
+    
+    public Saldo getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(Saldo saldo) {
+        this.saldo = saldo;
     }
     
 }

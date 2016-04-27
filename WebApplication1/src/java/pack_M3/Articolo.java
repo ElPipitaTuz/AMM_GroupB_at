@@ -28,6 +28,17 @@ public class Articolo {
     private double objPrice;
     private int objNumber;
     
+    //costruttore
+    public Articolo(){
+    
+        objName="";
+        objURL="";
+        objDescr="";
+        objPrice=0.0;
+        objNumber=0;
+        
+    }
+    
     //metodi//
 
     public String getobjName(){

@@ -29,8 +29,22 @@ public class BacuccuFactory {
     
     //costruttore
     private BacuccuFactory(){
+        
+        //saldo
+        
+        Saldo s1 = new Saldo();
+        s1.setSaldo(938.69);
+        
+        Saldo s2 = new Saldo();
+        s2.setSaldo(2232.41);
+        
+        Saldo s3 = new Saldo();
+        s3.setSaldo(1345.54);
+        
+        Saldo s4 = new Saldo();
+        s1.setSaldo(434.29);
     
-    //articoli
+        //articoli
         Articolo articolo_1 = new Articolo();
         articolo_1.setobjName("Home Kit");
         articolo_1.setobjURL("lol");
@@ -103,6 +117,7 @@ public class BacuccuFactory {
         cliente_1.setcf(01);
         cliente_1.setusrnm("deadmau5");
         cliente_1.setpsswrd(01);
+        cliente_1.setSaldo(s1);
         listaClienti.add(cliente_1);
         
         Utente_cliente cliente_2 = new Utente_cliente();
@@ -111,6 +126,7 @@ public class BacuccuFactory {
         cliente_2.setcf(02);
         cliente_2.setusrnm("skrillex");
         cliente_2.setpsswrd(02);
+        cliente_2.setSaldo(s2);
         listaClienti.add(cliente_2);
         
         //utenti venditori//
@@ -121,6 +137,7 @@ public class BacuccuFactory {
         vend_1.setcf(03);
         vend_1.setusrnm("a.tuzzi");
         vend_1.setpsswrd(03);
+        vend_1.setSaldo(s3);
         listaVenditori.add(vend_1);
         
         Utente_venditore vend_2 = new Utente_venditore();
@@ -129,8 +146,10 @@ public class BacuccuFactory {
         vend_2.setcf(04);
         vend_2.setusrnm("r.diana");
         vend_2.setpsswrd(04);
+        vend_2.setSaldo(s4);
         listaVenditori.add(vend_2);
         
+          
     }
     
     public ArrayList<Utente_cliente> getClienteList()
