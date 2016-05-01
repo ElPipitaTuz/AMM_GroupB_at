@@ -19,8 +19,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author albertotuzzi
  */
-@WebServlet(name = "Login", urlPatterns = {"/login.html"})
-public class Login extends HttpServlet {
+@WebServlet(name = "Cliente", urlPatterns = {"/cliente.html"})
+public class Cliente extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,45 +37,6 @@ public class Login extends HttpServlet {
         
         HttpSession session = request.getSession(true);
         
-        if(request.getParameter("submit") != null)
-        {
-            // Preleva i dati inviati
-            String username = request.getParameter("usrnm");
-            String password = request.getParameter("psswrd");
-            
-            ArrayList<Utente_cliente> listaClienti = BacuccuFactory.getInstance().getClienteList();
-            for(Utente_cliente c : listaClienti)
-            {
-                if(c.getusrnm().equals(username) && 
-                        c.getpsswrd().equals(password))
-                {
-                    session.setAttribute("loggedIn", true);
-                 
-                        request.setAttribute("cliente", c);
-                        request.getRequestDispatcher("cliente.jsp").forward(request, response);  
-                                    
-                }
-                
-            }
-            
-            ArrayList<Utente_venditore> listaVenditori = BacuccuFactory.getInstance().getVenditoreList();
-            for(Utente_venditore v : listaVenditori)
-            {
-                if(v.getusrnm().equals(username) && 
-                        v.getpsswrd().equals(password))
-                {
-                    session.setAttribute("loggedIn", true);
-                 
-                        request.setAttribute("venditore", v);
-                        request.getRequestDispatcher("venditore.jsp").forward(request, response);  
-                                    
-                }
-                
-            }
-            
-        }
-        request.getRequestDispatcher("login.jsp").forward(request, response);
- 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
