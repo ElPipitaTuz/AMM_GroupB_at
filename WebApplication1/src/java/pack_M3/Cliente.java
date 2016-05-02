@@ -37,6 +37,49 @@ public class Cliente extends HttpServlet {
         
         HttpSession session = request.getSession(true);
         
+        ArrayList<Utente_cliente> listaClienti = BacuccuFactory.getInstance().getClienteList();
+            for(Utente_cliente c : listaClienti)
+            {
+                if(c instanceof Utente_cliente){
+                request.getRequestDispatcher("cliente.jsp").forward(request, response);
+                }
+                
+                else{
+                    try(PrintWriter out = response.getWriter()){
+                        out.println("<!DOCTYPE html>");
+                        out.println("<title>Access Denied</title>");
+                        out.println("<meta charset=\"UTF-8\">");
+                        out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
+                        out.println("<meta name=\"author\" content=\"Alberto Tuzzi\">");
+                        out.println("<link href=\"CSS/style.css\" rel=\"stylesheet\" type=\"text/css\" media=\"screen\" />");
+                        out.println("</head>");
+                        out.println("<body>");
+                        out.println("<div class=\"header\">");
+                        out.println("<h1><a href=\"descrizione.html\"><strong><b>BACUCCU F.C. Official Online Store</b></strong></a></h1>");
+                        out.println("<p><b>-making Cagliari 7-football history since 2007-</b></p>");
+                        out.println("</div>");
+                        out.println("<div class=\"scorciatoie\">");
+                        out.println("<nav>");
+                        out.println("<p><b>Shortcuts</b></p>");
+                        out.println("<ul>");
+                        out.println("<li><a href=\"descrizione.html\"><strong>Home_Page</strong></a></li>");
+                        out.println("<li><a href=\"login.html\"><strong>Sign_In</strong></a></li>");
+                        out.println("<li><a href=\"cliente.html\"><strong>Buy</strong></a></li>");
+                        out.println("</ul>");
+                        out.println("</nav>");
+                        out.println("</div>");
+                        out.println("<div class=\"contenuto\">");
+                        out.println("<h2>Access Denied</h2>");
+                        out.println("<p>you are not a seller</p>");
+                        out.println("</div>");
+                        out.println("</body>");
+                    }
+                }
+                
+                
+               
+            }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
