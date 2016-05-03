@@ -47,12 +47,12 @@
          <h3><strong><b>New Object</b></strong></h3>
 <form action="venditore.html" method="post"> 
         <label for="objname">Object name</label>
-        <input type="text" name="objname" 
+        <input type="text" name="objName" 
                id="objname" value="objname" />
         <br />
         <label for="objURL">Object URL</label>
         <input type="url" name="objURL" 
-               id="objURL" value="" />
+               id="objURL" value="objURL" />
         <br />
         <label for="objDescr">Object brief description</label>
         <textarea rows="3" cols="10" 

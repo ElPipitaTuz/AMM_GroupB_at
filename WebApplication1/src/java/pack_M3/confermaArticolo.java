@@ -19,8 +19,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author albertotuzzi
  */
-@WebServlet(name = "Venditore", urlPatterns = {"/venditore.html"})
-public class Venditore extends HttpServlet {
+@WebServlet(name = "confermaArticolo", urlPatterns = {"/cliente.html"})
+public class confermaArticolo extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,63 +37,7 @@ public class Venditore extends HttpServlet {
         
         HttpSession session = request.getSession(true);
         
-                if(request.getParameter("submit") != null){
-                        
-                        // Preleva i dati inviati
-                        String artName = request.getParameter("objName");
-                        String artURL = request.getParameter("objURL");
-                        String artDescr = request.getParameter("objDescr");
-                        String artPrice = request.getParameter("objPrice");
-                        String artNumber = request.getParameter("objNumber");
-                        
-                        try(PrintWriter out = response.getWriter()){
-                        out.println("<!DOCTYPE html>");
-                        out.println("<title>Submit succesful</title>");
-                        out.println("<meta charset=\"UTF-8\">");
-                        out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
-                        out.println("<meta name=\"author\" content=\"Alberto Tuzzi\">");
-                        out.println("<link href=\"CSS/style.css\" rel=\"stylesheet\" type=\"text/css\" media=\"screen\" />");
-                        out.println("</head>");
-                        out.println("<body>");
-                        out.println("<div class=\"header\">");
-                        out.println("<h1><a href=\"descrizione.html\"><strong><b>BACUCCU F.C. Official Online Store</b></strong></a></h1>");
-                        out.println("<p><b>-making Cagliari 7-football history since 2007-</b></p>");
-                        out.println("</div>");
-                        out.println("<div class=\"scorciatoie\">");
-                        out.println("<nav>");
-                        out.println("<p><b>Shortcuts</b></p>");
-                        out.println("<ul>");
-                        out.println("<li><a href=\"descrizione.html\"><strong>Home_Page</strong></a></li>");
-                        out.println("<li><a href=\"login.html\"><strong>Sign_In</strong></a></li>");
-                        out.println("<li><a href=\"cliente.html\"><strong>Buy</strong></a></li>");
-                        out.println("</ul>");
-                        out.println("</nav>");
-                        out.println("</div>");
-                        out.println("<div class=\"contenuto\">");
-                        out.println("<h2>Submit Succesful</h2>");
-                        out.println("<p>your object has been add</p>");
-                        out.println("<h3>Added Object data</h3>");
-                        out.println("<ul>");
-                        out.println("<li>Name:"+ artName + "</li>");
-                        out.println("<li>URL:"+ artURL + "</li>");
-                        out.println("<li>Description:"+ artDescr + "</li>");
-                        out.println("<li>Price:"+ artPrice + "</li>");
-                        out.println("<li>Remaining:"+ artNumber + "</li>");
-                        out.println("</ul>");
-                        out.println("</div>");
-                        out.println("</body>");
-                    }
-                }     
-        
-        ArrayList<Utente_venditore> listaVenditori = BacuccuFactory.getInstance().getVenditoreList();
-            for(Utente_venditore v : listaVenditori)
-            {
-                if(v instanceof Utente_venditore){
-                request.getRequestDispatcher("venditore.jsp").forward(request, response);
-                }
-                
-                else{
-                    try(PrintWriter out = response.getWriter()){
+        try(PrintWriter out = response.getWriter()){
                         out.println("<!DOCTYPE html>");
                         out.println("<title>Access Denied</title>");
                         out.println("<meta charset=\"UTF-8\">");
@@ -117,19 +61,20 @@ public class Venditore extends HttpServlet {
                         out.println("</nav>");
                         out.println("</div>");
                         out.println("<div class=\"contenuto\">");
-                        out.println("<h2>Access Denied</h2>");
-                        out.println("<p>you are not a seller</p>");
+                        out.println("<h2>Selected Object</h2>");
+                        out.println("<ul>");
+                        out.println("<li>Name:"+  + "</li>");
+                        out.println("<li>URL:"+ artURL + "</li>");
+                        out.println("<li>Description:"+ artDescr + "</li>");
+                        out.println("<li>Price:"+ artPrice + "</li>");
+                        out.println("<li>Remaining:"+ artNumber + "</li>");
+                        out.println("</ul>");
+                        
+                    
                         out.println("</div>");
                         out.println("</body>");
-                    }
-                }
-                
-                
-               
-            }
-                  
-                
-         
+                                
+        }
         
     }
 

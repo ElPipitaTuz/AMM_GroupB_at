@@ -36,6 +36,7 @@ public class Cliente extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         HttpSession session = request.getSession(true);
+       
         
         ArrayList<Utente_cliente> listaClienti = BacuccuFactory.getInstance().getClienteList();
             for(Utente_cliente c : listaClienti)
@@ -70,7 +71,7 @@ public class Cliente extends HttpServlet {
                         out.println("</div>");
                         out.println("<div class=\"contenuto\">");
                         out.println("<h2>Access Denied</h2>");
-                        out.println("<p>you are not a seller</p>");
+                        out.println("<p>you are not a registered client</p>");
                         out.println("</div>");
                         out.println("</body>");
                     }

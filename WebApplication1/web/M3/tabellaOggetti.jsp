@@ -25,7 +25,7 @@
                          src="images_web/scudetto_bacuccu.jpg" width="70" height="90"></td>
                 <td>${Articolo.objNumber}</td>
                 <td>${Articolo.objPrice} $</td>
-                <td><a href="cliente.jsp"><b>Add to Cart</b></a></td>
+                <td><a href="cliente.java"><b>Add to Cart</b></a></td>
             </tr>
             </c:forEach>  
         </table>    
