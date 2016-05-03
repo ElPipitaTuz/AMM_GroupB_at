@@ -62,13 +62,7 @@ public class confermaArticolo extends HttpServlet {
                         out.println("</div>");
                         out.println("<div class=\"contenuto\">");
                         out.println("<h2>Selected Object</h2>");
-                        out.println("<ul>");
-                        out.println("<li>Name:"+  + "</li>");
-                        out.println("<li>URL:"+ artURL + "</li>");
-                        out.println("<li>Description:"+ artDescr + "</li>");
-                        out.println("<li>Price:"+ artPrice + "</li>");
-                        out.println("<li>Remaining:"+ artNumber + "</li>");
-                        out.println("</ul>");
+                        
                         
                     
                         out.println("</div>");
