@@ -45,7 +45,7 @@
           
 
          <h3><strong><b>New Object</b></strong></h3>
-<form action="venditore.html" method="get"> 
+<form action="venditore.html" method="post"> 
         <label for="objname">Object name</label>
         <input type="text" name="objname" 
                id="objname" value="objname" />

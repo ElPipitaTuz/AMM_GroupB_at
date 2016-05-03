@@ -10,17 +10,7 @@ package pack_M3;
  * @author albertotuzzi
  */
 public class Articolo {
-    
-//    public enum ArticoloId{
-//        ArticoloId_Home_kit,
-//        ArticoloId_Away_kit,
-//        ArticoloId_bottoms,
-//        ArticoloId_socks,
-//        ArticoloId_t_shirt,
-//        ArticoloId_key_keeper,
-//        ArticoloId_paper,
-//        ArticoloId_Zippo,
-//     
+  
     
     private String objName;
     private String objURL;
