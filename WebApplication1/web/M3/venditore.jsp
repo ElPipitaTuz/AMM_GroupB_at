@@ -39,10 +39,23 @@
         
         
         <div class="contenuto">
+            
+            <c:choose>
+            
+        <c:when test="${noCompilato == true}">
+            <p> You have to fill all the fields </p>
+            < > <a href="Login"> Go on </a> </p>
+        </c:when>
+            
+        <c:when test="${Buyer == true}">
+            <p>Restricted section, please login to continue</p>    
+        </c:when>
+        
+            <c:when test="${Seller == true}">
             <h2><b>Welcome back mr. ${Utente_venditore.nomeVenditore} ${Utente_venditore.cognomeVenditore}</b></h2>
             <p>your credit:</p>
             <p>${Utente_venditore.saldo} $</p>
-          
+           
 
          <h3><strong><b>New Object</b></strong></h3>
 <form action="venditore.html" method="post"> 
@@ -69,5 +82,38 @@
         <button type="submit">submit</button>
         </form>
         </div>
+            
+            </c:when>
+                
+        <c:when test="${riepilogo == true}">
+            <div>
+            <h3> Your Object </h3>
+            <table>  
+                <tr>
+                    <th><b>Object</b></th>
+                    <th><b>Photo</b></th>
+                    <th><b>Description</b></th>
+                    <th><b>Remaining</b></th>
+                    <th><b>Price</b></th>
+                    
+                </tr>
+                
+                <tr>
+                    <td> ${nObj.objName} </td>
+                    <td> <img title="${nObj.objName}" src="${nObj.URL}" 
+                              width="70" height="90" alt="${nObj.objName}"/> </td>
+                    <td class="Descrizione"> ${nObj.objDescr} </td>
+                    <td> ${nObj.objPrice} </td>
+                    <td> ${nObj.objPrice} $ </td>
+                </tr>
+            </table>
+                
+            <p> <a href="Login"> Another new object? </a> </p>
+                
+            </div>
+        </c:when>
+        </c:choose>
+        
+                
     </body>
 </html>

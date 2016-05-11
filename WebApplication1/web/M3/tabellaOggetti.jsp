@@ -18,14 +18,14 @@
                 <th><b>Price</b></th>
                 <th><b>Add</b></th>
             </tr>
-            <c:forEach var="Articolo" items="${listaArticoli}">
+            <c:forEach var="table" items="${listaArticoli}">
             <tr class="dispari">
-                <td>${Articolo.objName}</td>
-                <td><img title="${Articolo.objName}" alt="${Articolo.objName}" 
+                <td>${table.objName}</td>
+                <td><img title="${table.objName}" alt="${table.objName}" 
                          src="images_web/scudetto_bacuccu.jpg" width="70" height="90"></td>
                 <td>${Articolo.objNumber}</td>
                 <td>${Articolo.objPrice} $</td>
-                <td><a href="cliente.java"><b>Add to Cart</b></a></td>
+                <td><a href="Cliente.html?objCode=${table.objCode}"<b>Add to Cart</b></a></td>
             </tr>
             </c:forEach>  
         </table>    

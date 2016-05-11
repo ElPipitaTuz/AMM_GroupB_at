@@ -34,7 +34,7 @@ public class Venditore extends HttpServlet {
             throws ServletException, IOException {
         
         HttpSession session = request.getSession(false);
-        request.setAttribute("riepilogoOgg", false);
+        request.setAttribute("riepilogoIns", false);
                 
         //Controllo per accesso da Login a Venditore, passando per il link senza fare il login
         if (session.getAttribute("logId") == null){
@@ -78,7 +78,7 @@ public class Venditore extends HttpServlet {
                           
                         
                             request.setAttribute("ObjectAdded", nObj);
-                            request.setAttribute("riepilogo", true);
+                            request.setAttribute("riepilogoIns", true);
                             request.getRequestDispatcher("venditore.jsp").forward(request, response);
                     
                         }

@@ -38,6 +38,15 @@
         </div>
 
     <div class="contenuto">
+        
+        <c:choose>
+            
+        <c:when test="${Seller == true}">
+            <p>Restricted section, please login to continue</p>    
+        </c:when>
+        
+        <c:when test="${Buyer == true}"> 
+            
     <h2><b>Hi ${Utente_cliente.nomeCliente}, welcome to the Merch Section</b></h2>
     
     <p>your credit:</p>
@@ -46,18 +55,48 @@
     <p>scroll down and click on "add to cart" to select the items you desire</p>
     
         <h3><strong>Our Stuff</strong></h3>
-        <table>
-            <tr>
-                <th><b>Object</b></th>
-                <th><b>Photo</b></th>
-                <th><b>Remaining</b></th>
-                <th><b>Price</b></th>
-                <th><b>Add</b></th>
-            </tr>
+        
          
             <jsp:include page="tabellaOggetti.jsp"/>
             
-        </table>
+        
+        </c:when> 
+            
+        <c:when test="${riepilogoOgg == true}">
+            <div>
+            <table>
+                <tr> 
+                    <th><b>Object</b></th>
+                    <th><b>Photo</b></th>
+                    <th><b>Remaining</b></th>
+                    <th><b>Price</b></th>
+                </tr>
+               
+                <tr class="dispari">
+                    <td> ${Articolo.objName} </td>
+                    <td> <img title="${Articolo.objName}" src="${Articolo.objURL}" 
+                              width="70" height="90" alt="${Articolo.objName}"/> </td>
+                    <td> ${Articolo.objNumber} </td>
+                    <td> ${Articolo.objNumber} € </td>
+                </tr>
+            </table>
+                
+            <p> <a href="Cliente.html?objCodeChoosen=${Articolo.getobjCode()}"> Confirm buying </a> </p>
+            </div>
+        </c:when>  
+            
+        <c:when test="${acquistato == true}">
+                <p> Object bought </p>
+                <p> <a href="Cliente.html"> Go on </a> </p>
+        </c:when>
+                
+        <c:when test="${Noacquistato}">
+            <p> Warning, not enough credit! </p>
+            <p> <a href="Cliente.html"> Go on </a> </p>
+        </c:when>
+                
+        </c:choose>
+    
        </div>
 
     </body>
