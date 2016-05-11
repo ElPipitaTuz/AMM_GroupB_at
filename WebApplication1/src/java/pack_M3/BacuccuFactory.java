@@ -51,6 +51,7 @@ public class BacuccuFactory {
         articolo_1.setobjDescr("pippo");
         articolo_1.setobjPrice(89.90);
         articolo_1.setobjNumber(233);
+        articolo_1.setobjCode("0001");
         listaArticoli.add(articolo_1);
         
         Articolo articolo_2 = new Articolo();
@@ -59,6 +60,7 @@ public class BacuccuFactory {
         articolo_2.setobjDescr("pippo");
         articolo_2.setobjPrice(89.90);
         articolo_2.setobjNumber(212);
+        articolo_2.setobjCode("0002");
         listaArticoli.add(articolo_2);
         
         Articolo articolo_3 = new Articolo();
@@ -67,6 +69,7 @@ public class BacuccuFactory {
         articolo_3.setobjDescr("pippo");
         articolo_3.setobjPrice(35.90);
         articolo_3.setobjNumber(165);
+        articolo_3.setobjCode("0003");
         listaArticoli.add(articolo_3);
 
         Articolo articolo_4 = new Articolo();
@@ -75,6 +78,7 @@ public class BacuccuFactory {
         articolo_4.setobjDescr("pippo");
         articolo_4.setobjPrice(9.90);
         articolo_4.setobjNumber(132);
+        articolo_4.setobjCode("0004");
         listaArticoli.add(articolo_4);
         
         Articolo articolo_5 = new Articolo();
@@ -83,6 +87,7 @@ public class BacuccuFactory {
         articolo_5.setobjDescr("pippo");
         articolo_5.setobjPrice(25.90);
         articolo_5.setobjNumber(302);
+        articolo_5.setobjCode("0005");
         listaArticoli.add(articolo_5);
         
         Articolo articolo_6 = new Articolo();
@@ -91,6 +96,7 @@ public class BacuccuFactory {
         articolo_6.setobjDescr("pippo");
         articolo_6.setobjPrice(3.90);
         articolo_6.setobjNumber(404);
+        articolo_6.setobjCode("0006");
         listaArticoli.add(articolo_6);
         
         Articolo articolo_7 = new Articolo();
@@ -99,6 +105,7 @@ public class BacuccuFactory {
         articolo_7.setobjDescr("pippo");
         articolo_7.setobjPrice(1.90);
         articolo_7.setobjNumber(132);
+        articolo_7.setobjCode("0007");
         listaArticoli.add(articolo_7);
         
         Articolo articolo_8 = new Articolo();
@@ -107,6 +114,7 @@ public class BacuccuFactory {
         articolo_8.setobjDescr("pippo");
         articolo_8.setobjPrice(6.90);
         articolo_8.setobjNumber(173);
+        articolo_8.setobjCode("0008");
         listaArticoli.add(articolo_8);
 
         //utenti clienti//
@@ -186,6 +194,21 @@ public class BacuccuFactory {
         return null;
     }
     
+    public ArrayList<Articolo> getArticoloList()
+    {
+        return listaArticoli;
+    }
+    
+    public Articolo getArticolo(int num_in)
+    {
+        for(Articolo a : listaArticoli)
+        {
+            if(a.getobjNumber() == num_in)
+                return a;
+        }
+        
+        return null;
+    }
     
     
 }

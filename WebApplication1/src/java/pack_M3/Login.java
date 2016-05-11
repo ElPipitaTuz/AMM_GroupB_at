@@ -6,7 +6,6 @@
 package pack_M3;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,114 +34,75 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        HttpSession session = request.getSession(true);
+        HttpSession session = request.getSession();
+	String username =request.getParameter("Username");
+        String password =request.getParameter("Password");
         
-        if(request.getParameter("submit") != null)
-        {
-            // Preleva i dati inviati
-            String username = request.getParameter("usrnm");
-            String password = request.getParameter("psswrd");
-           
-            
-            ArrayList<Utente_cliente> listaClienti = BacuccuFactory.getInstance().getClienteList();
-            for(Utente_cliente c : listaClienti)
-            {
-                if(c.getusrnm().equals(username) && 
-                        c.getpsswrd().equals(password))
-                {
-                    session.setAttribute("loggedIn", true);
-                 
-                        request.setAttribute("cliente", c);
-                        request.getRequestDispatcher("cliente.jsp").forward(request, response);  
-                                    
-                }
+        ArrayList<Articolo> listaArticoli = BacuccuFactory.getInstance().getArticoloList();
                 
-                else{
-                    try(PrintWriter out = response.getWriter()){
-                        out.println("<!DOCTYPE html>");
-                        out.println("<title>Access Denied</title>");
-                        out.println("<meta charset=\"UTF-8\">");
-                        out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
-                        out.println("<meta name=\"author\" content=\"Alberto Tuzzi\">");
-                        out.println("<link href=\"CSS/style.css\" rel=\"stylesheet\" type=\"text/css\" media=\"screen\" />");
-                        out.println("</head>");
-                        out.println("<body>");
-                        out.println("<div class=\"header\">");
-                        out.println("<h1><a href=\"descrizione.html\"><strong><b>BACUCCU F.C. Official Online Store</b></strong></a></h1>");
-                        out.println("<p><b>-making Cagliari 7-football history since 2007-</b></p>");
-                        out.println("</div>");
-                        out.println("<div class=\"scorciatoie\">");
-                        out.println("<nav>");
-                        out.println("<p><b>Shortcuts</b></p>");
-                        out.println("<ul>");
-                        out.println("<li><a href=\"descrizione.html\"><strong>Home_Page</strong></a></li>");
-                        out.println("<li><a href=\"login.html\"><strong>Sign_In</strong></a></li>");
-                        out.println("<li><a href=\"cliente.html\"><strong>Buy</strong></a></li>");
-                        out.println("</ul>");
-                        out.println("</nav>");
-                        out.println("</div>");
-                        out.println("<div class=\"contenuto\">");
-                        out.println("<h2>Error</h2>");
-                        out.println("<p>wrong username or password, try again</p>");
-                        out.println("</div>");
-                        out.println("</body>");
+        if(request.getParameter("Submit") == null) {
+            
+            if (session.getAttribute("logId") != null) {
+                switch ((String) session.getAttribute("Utente")) {
+                    case ("cliente"): {
+                        request.setAttribute("listaArticoli", listaArticoli);
+                        request.setAttribute("Buyer", true);
+                        request.getRequestDispatcher("cliente.jsp").forward(request, response);
+                        break;
                     }
-                }
-                
-                
+                    case ("venditore"): {
+                        request.setAttribute("Seller", true);
+                        request.setAttribute("riepilogoOgg", false);
+                        request.getRequestDispatcher("venditore.jsp").forward(request, response);
+                        break;}
+                    }   
             }
-            
-            ArrayList<Utente_venditore> listaVenditori = BacuccuFactory.getInstance().getVenditoreList();
-            for(Utente_venditore v : listaVenditori)
-            {
-                if(v.getusrnm().equals(username) && 
-                        v.getpsswrd().equals(password))
-                {
-                    session.setAttribute("loggedIn", true);
-                 
-                        request.setAttribute("venditore", v);
-                        request.getRequestDispatcher("venditore.jsp").forward(request, response);  
-                                    
-                }
-                
-                else{
-                    try(PrintWriter out = response.getWriter()){
-                        out.println("<!DOCTYPE html>");
-                        out.println("<title>Access Denied</title>");
-                        out.println("<meta charset=\"UTF-8\">");
-                        out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
-                        out.println("<meta name=\"author\" content=\"Alberto Tuzzi\">");
-                        out.println("<link href=\"CSS/style.css\" rel=\"stylesheet\" type=\"text/css\" media=\"screen\" />");
-                        out.println("</head>");
-                        out.println("<body>");
-                        out.println("<div class=\"header\">");
-                        out.println("<h1><a href=\"descrizione.html\"><strong><b>BACUCCU F.C. Official Online Store</b></strong></a></h1>");
-                        out.println("<p><b>-making Cagliari 7-football history since 2007-</b></p>");
-                        out.println("</div>");
-                        out.println("<div class=\"scorciatoie\">");
-                        out.println("<nav>");
-                        out.println("<p><b>Shortcuts</b></p>");
-                        out.println("<ul>");
-                        out.println("<li><a href=\"descrizione.html\"><strong>Home_Page</strong></a></li>");
-                        out.println("<li><a href=\"login.html\"><strong>Sign_In</strong></a></li>");
-                        out.println("<li><a href=\"cliente.html\"><strong>Buy</strong></a></li>");
-                        out.println("</ul>");
-                        out.println("</nav>");
-                        out.println("</div>");
-                        out.println("<div class=\"contenuto\">");
-                        out.println("<h2>Error</h2>");
-                        out.println("<p>wrong username or password, try again</p>");
-                        out.println("</div>");
-                        out.println("</body>");
-                    }
-                }
-                
+            else {
+                request.getRequestDispatcher("login.jsp").forward(request, response);
             }
-            
         }
-        request.getRequestDispatcher("login.jsp").forward(request, response);
+        
+        
+        else if (request.getParameter("Submit") != null){            
+        
+            ArrayList<Utente_venditore> listaVenditori = BacuccuFactory.getInstance().getVenditoreList();
+            
+            for(Utente_venditore u : listaVenditori)
+            {
+                if(u.getusrnm().equals(username) && u.getpsswrd().equals(password))
+                {   
+                    session.setAttribute("logId", true);
+                    session.setAttribute("cf", u.getcf());
+                    
+                    if(u instanceof Utente_venditore)
+                    {
+                        session.setAttribute("venditore", u);
+			session.setAttribute("Utente", "venditore");
+                        request.setAttribute("Seller", true);
+                        request.getRequestDispatcher("venditore.jsp").forward(request, response);
+                    }
+                    else
+                    {
+                        session.setAttribute("cliente", u);
+			session.setAttribute("Utente", "cliente");
+                        request.setAttribute("Buyer", true);
+                        request.setAttribute("listaArticoli", listaArticoli);
+                        request.getRequestDispatcher("cliente.jsp")
+                                .forward(request, response);
+                    }
+                }
+            }
+                request.setAttribute("error", "Username or Password are incorrect, try again");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+            }
+        
  
-    }
+        
+}
+    
+        
+ 
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

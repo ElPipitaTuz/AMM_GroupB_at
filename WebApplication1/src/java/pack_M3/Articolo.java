@@ -17,6 +17,7 @@ public class Articolo {
     private String objDescr;
     private double objPrice;
     private int objNumber;
+    private String objCode;
     
     //costruttore
     public Articolo(){
@@ -26,6 +27,7 @@ public class Articolo {
         objDescr="";
         objPrice=0.0;
         objNumber=0;
+        objCode="";
         
     }
     
@@ -69,6 +71,14 @@ public class Articolo {
 
     public void setobjNumber(int objNumber){
         this.objNumber = objNumber;
+    }
+    
+    public String getobjCode(){
+        return objCode;
+    }
+
+    public void setobjCode(String objCode){
+        this.objCode = objCode;
     }
   
     

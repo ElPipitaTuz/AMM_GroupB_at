@@ -6,7 +6,6 @@
 package pack_M3;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,57 +30,76 @@ public class Cliente extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         
-        HttpSession session = request.getSession(true);
-       
+        HttpSession session = request.getSession(false);
+        request.setAttribute("riepilogoOgg", false);
         
-        ArrayList<Utente_cliente> listaClienti = BacuccuFactory.getInstance().getClienteList();
-            for(Utente_cliente c : listaClienti)
-            {
-                if(c instanceof Utente_cliente){
-                request.getRequestDispatcher("cliente.jsp").forward(request, response);
-                }
-                
-                else{
-                    try(PrintWriter out = response.getWriter()){
-                        out.println("<!DOCTYPE html>");
-                        out.println("<title>Access Denied</title>");
-                        out.println("<meta charset=\"UTF-8\">");
-                        out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
-                        out.println("<meta name=\"author\" content=\"Alberto Tuzzi\">");
-                        out.println("<link href=\"CSS/style.css\" rel=\"stylesheet\" type=\"text/css\" media=\"screen\" />");
-                        out.println("</head>");
-                        out.println("<body>");
-                        out.println("<div class=\"header\">");
-                        out.println("<h1><a href=\"descrizione.html\"><strong><b>BACUCCU F.C. Official Online Store</b></strong></a></h1>");
-                        out.println("<p><b>-making Cagliari 7-football history since 2007-</b></p>");
-                        out.println("</div>");
-                        out.println("<div class=\"scorciatoie\">");
-                        out.println("<nav>");
-                        out.println("<p><b>Shortcuts</b></p>");
-                        out.println("<ul>");
-                        out.println("<li><a href=\"descrizione.html\"><strong>Home_Page</strong></a></li>");
-                        out.println("<li><a href=\"login.html\"><strong>Sign_In</strong></a></li>");
-                        out.println("<li><a href=\"cliente.html\"><strong>Buy</strong></a></li>");
-                        out.println("</ul>");
-                        out.println("</nav>");
-                        out.println("</div>");
-                        out.println("<div class=\"contenuto\">");
-                        out.println("<h2>Access Denied</h2>");
-                        out.println("<p>you are not a registered client</p>");
-                        out.println("</div>");
-                        out.println("</body>");
+        ArrayList<Articolo> listaArticoli = new ArrayList<>();
+        listaArticoli = BacuccuFactory.getInstance().getArticoloList();
+        
+        //accesso login --> cliente
+        if(session.getAttribute("logId") == null){
+            request.setAttribute("Seller", true);
+            request.getRequestDispatcher("cliente.jsp").forward(request, response);
+        }
+        
+        //accesso per URL cliente
+        else if (session.getAttribute("logId") != null){
+            switch ((String)session.getAttribute("Utente")){
+                case ("venditore"): {
+                    request.setAttribute("Seller", true);
+                    request.getRequestDispatcher("cliente.jsp").forward(request, response);
+                    }
+                case ("cliente"): { 
+                                            
+                    if (request.getParameter("objCode") != null){
+                        Articolo o1 = BacuccuFactory.getInstance().getArticolo(Integer.parseInt(request.getParameter("objCode")));
+                    
+                        request.setAttribute("obj", o1);
+                        request.setAttribute("riepilogoOgg", true);
+                        
+                        
+                        request.getRequestDispatcher("cliente.jsp").forward(request, response);                     
+                    }  
+                    
+                    else if (request.getParameter("objCodeChoosen") != null){
+                        Double cnt = BacuccuFactory.getInstance().getCliente((int) session.getAttribute("objCode")).getSaldo().getSaldo();
+                        Articolo o2 = BacuccuFactory.getInstance().getArticolo(Integer.parseInt(request.getParameter("objCodeChoosen")));
+                                                                                        
+                        if (cnt > o2.getobjPrice()) {
+                        
+                            request.setAttribute("obj", o2);
+                            request.setAttribute("acquistato", true);
+                            request.getRequestDispatcher("cliente.jsp").forward(request, response);
+                        }
+                        
+                        else {
+                            request.setAttribute("rifiutato", true);
+                            request.getRequestDispatcher("cliente.jsp").forward(request, response);
+                        }
+                    }
+                        
+                    else{
+                        request.setAttribute("Buyer", true);
+                        
+                        request.setAttribute("listaArticoli", listaArticoli);
+                        request.getRequestDispatcher("cliente.jsp").forward(request, response);                     
                     }
                 }
-                
-                
-               
             }
+        }
         
+        
+    
+    
+    
+    
+    
     }
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

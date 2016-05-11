@@ -6,8 +6,6 @@
 package pack_M3;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,107 +29,68 @@ public class Venditore extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         
-        HttpSession session = request.getSession(true);
-        
-                if(request.getParameter("submit") != null){
-                        
-                        // Preleva i dati inviati
-                        String artName = request.getParameter("objName");
-                        String artURL = request.getParameter("objURL");
-                        String artDescr = request.getParameter("objDescr");
-                        String artPrice = request.getParameter("objPrice");
-                        String artNumber = request.getParameter("objNumber");
-                        
-                        try(PrintWriter out = response.getWriter()){
-                        out.println("<!DOCTYPE html>");
-                        out.println("<title>Submit succesful</title>");
-                        out.println("<meta charset=\"UTF-8\">");
-                        out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
-                        out.println("<meta name=\"author\" content=\"Alberto Tuzzi\">");
-                        out.println("<link href=\"CSS/style.css\" rel=\"stylesheet\" type=\"text/css\" media=\"screen\" />");
-                        out.println("</head>");
-                        out.println("<body>");
-                        out.println("<div class=\"header\">");
-                        out.println("<h1><a href=\"descrizione.html\"><strong><b>BACUCCU F.C. Official Online Store</b></strong></a></h1>");
-                        out.println("<p><b>-making Cagliari 7-football history since 2007-</b></p>");
-                        out.println("</div>");
-                        out.println("<div class=\"scorciatoie\">");
-                        out.println("<nav>");
-                        out.println("<p><b>Shortcuts</b></p>");
-                        out.println("<ul>");
-                        out.println("<li><a href=\"descrizione.html\"><strong>Home_Page</strong></a></li>");
-                        out.println("<li><a href=\"login.html\"><strong>Sign_In</strong></a></li>");
-                        out.println("<li><a href=\"cliente.html\"><strong>Buy</strong></a></li>");
-                        out.println("</ul>");
-                        out.println("</nav>");
-                        out.println("</div>");
-                        out.println("<div class=\"contenuto\">");
-                        out.println("<h2>Submit Succesful</h2>");
-                        out.println("<p>your object has been add</p>");
-                        out.println("<h3>Added Object data</h3>");
-                        out.println("<ul>");
-                        out.println("<li>Name:"+ artName + "</li>");
-                        out.println("<li>URL:"+ artURL + "</li>");
-                        out.println("<li>Description:"+ artDescr + "</li>");
-                        out.println("<li>Price:"+ artPrice + "</li>");
-                        out.println("<li>Remaining:"+ artNumber + "</li>");
-                        out.println("</ul>");
-                        out.println("</div>");
-                        out.println("</body>");
-                    }
-                }     
-        
-        ArrayList<Utente_venditore> listaVenditori = BacuccuFactory.getInstance().getVenditoreList();
-            for(Utente_venditore v : listaVenditori)
-            {
-                if(v instanceof Utente_venditore){
-                request.getRequestDispatcher("venditore.jsp").forward(request, response);
+        HttpSession session = request.getSession(false);
+        request.setAttribute("riepilogoOgg", false);
+                
+        //Controllo per accesso da Login a Venditore, passando per il link senza fare il login
+        if (session.getAttribute("logId") == null){
+            request.setAttribute("Buyer", true);
+            request.getRequestDispatcher("venditore.jsp").forward(request, response);
+        }
+
+        else if(session.getAttribute("logId") != null){
+            switch ((String)session.getAttribute("Utente")){
+                case("cliente"): {
+                    request.setAttribute("Buyer", true);
+                    request.getRequestDispatcher("venditore.jsp").forward(request, response);
                 }
-                
-                else{
-                    try(PrintWriter out = response.getWriter()){
-                        out.println("<!DOCTYPE html>");
-                        out.println("<title>Access Denied</title>");
-                        out.println("<meta charset=\"UTF-8\">");
-                        out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
-                        out.println("<meta name=\"author\" content=\"Alberto Tuzzi\">");
-                        out.println("<link href=\"CSS/style.css\" rel=\"stylesheet\" type=\"text/css\" media=\"screen\" />");
-                        out.println("</head>");
-                        out.println("<body>");
-                        out.println("<div class=\"header\">");
-                        out.println("<h1><a href=\"descrizione.html\"><strong><b>BACUCCU F.C. Official Online Store</b></strong></a></h1>");
-                        out.println("<p><b>-making Cagliari 7-football history since 2007-</b></p>");
-                        out.println("</div>");
-                        out.println("<div class=\"scorciatoie\">");
-                        out.println("<nav>");
-                        out.println("<p><b>Shortcuts</b></p>");
-                        out.println("<ul>");
-                        out.println("<li><a href=\"descrizione.html\"><strong>Home_Page</strong></a></li>");
-                        out.println("<li><a href=\"login.html\"><strong>Sign_In</strong></a></li>");
-                        out.println("<li><a href=\"cliente.html\"><strong>Buy</strong></a></li>");
-                        out.println("</ul>");
-                        out.println("</nav>");
-                        out.println("</div>");
-                        out.println("<div class=\"contenuto\">");
-                        out.println("<h2>Access Denied</h2>");
-                        out.println("<p>you are not a seller</p>");
-                        out.println("</div>");
-                        out.println("</body>");
-                    }
-                }
-                
-                
-               
+                case ("venditore"):{
+                    //Form Venditore
+                    if(request.getParameter("SubmitVenditore") != null){
+                        Articolo nObj = new Articolo();
+                        nObj.setobjCode(request.getParameter("ObjectCode"));
+                        nObj.setobjName(request.getParameter("ObjectName"));
+                        nObj.setobjURL(request.getParameter("URL"));
+                        nObj.setobjDescr(request.getParameter("Descrizione"));
+                                                                    
+                        try {
+                            nObj.setobjNumber(Integer.parseInt(request.getParameter("Quantita")));
+                        } 
+                        
+                        catch (Exception e) {
+                            nObj.setobjNumber(0);
+                        }
+
+                        try {
+                            nObj.setobjPrice(Double.parseDouble(request.getParameter("Prezzo")));
+                        } 
+
+                        catch (Exception e) {
+                            nObj.setobjPrice(0);
+                        }
+                        
+                        if (nObj.getobjName() != null && nObj.getobjURL() != null && nObj.getobjDescr() != null &&
+                            nObj.getobjNumber() != 0 && nObj.getobjPrice() != 0.0) {
+                          
+                        
+                            request.setAttribute("ObjectAdded", nObj);
+                            request.setAttribute("riepilogo", true);
+                            request.getRequestDispatcher("venditore.jsp").forward(request, response);
+                    
+                        }
+                        else {
+                            request.setAttribute("noCompilato", true);
+                            request.getRequestDispatcher("venditore.jsp").forward(request, response);
+                        }
+                }   }
             }
-                  
-                
-         
-        
+        } 
     }
+       
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
