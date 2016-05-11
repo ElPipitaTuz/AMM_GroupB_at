@@ -4,7 +4,9 @@
     Author     : albertotuzzi
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 
 <html>
@@ -38,6 +40,10 @@
     </div>
     
     <div class="contenuto">
+        <c:if test="${error!= null}">
+                <p>${error}</p>
+            </c:if>
+
         <h2><strong><b>Sign in</b></strong></h2>
 
 <form action="Login" method="post"> 
