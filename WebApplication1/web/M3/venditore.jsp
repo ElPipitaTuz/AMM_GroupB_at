@@ -44,7 +44,7 @@
             
         <c:when test="${noCompilato == true}">
             <p> You have to fill all the fields </p>
-            < > <a href="Login"> Go on </a> </p>
+            <p> <a href="Login"> Go on </a> </p>
         </c:when>
             
         <c:when test="${Buyer == true}">
@@ -52,13 +52,13 @@
         </c:when>
         
             <c:when test="${Seller == true}">
-            <h2><b>Welcome back mr. ${Utente_venditore.nomeVenditore} ${Utente_venditore.cognomeVenditore}</b></h2>
+            <h2><b>Welcome back mr. ${venditore.nomeVenditore} ${venditore.cognomeVenditore}</b></h2>
             <p>your credit:</p>
-            <p>${Utente_venditore.saldo} $</p>
+            <p>${venditore.saldo} $</p>
            
 
          <h3><strong><b>New Object</b></strong></h3>
-<form action="venditore.html" method="post"> 
+<form action="/M3/venditore.html" method="post"> 
         <label for="objname">Object name</label>
         <input type="text" name="objName" 
                id="objname" value="objname" />
@@ -99,12 +99,12 @@
                 </tr>
                 
                 <tr>
-                    <td> ${nObj.objName} </td>
-                    <td> <img title="${nObj.objName}" src="${nObj.URL}" 
-                              width="70" height="90" alt="${nObj.objName}"/> </td>
-                    <td class="Descrizione"> ${nObj.objDescr} </td>
-                    <td> ${nObj.objPrice} </td>
-                    <td> ${nObj.objPrice} $ </td>
+                    <td> ${ObjectAdded.objName} </td>
+                    <td> <img title="${ObjectAdded.objName}" src="${ObjectAdded.URL}" 
+                              width="70" height="90" alt="${ObjectAdded.objName}"/> </td>
+                    <td class="Descrizione"> ${ObjectAdded.objDescr} </td>
+                    <td> ${ObjectAdded.objPrice} </td>
+                    <td> ${ObjectAdded.objPrice} $ </td>
                 </tr>
             </table>
                 

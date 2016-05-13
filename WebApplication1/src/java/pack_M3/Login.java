@@ -58,7 +58,7 @@ public class Login extends HttpServlet {
                     }   
             }
             else {
-                request.getRequestDispatcher("login.jsp").forward(request, response);
+                request.getRequestDispatcher("/M3/login.jsp").forward(request, response);
             }
         }
         
@@ -79,7 +79,7 @@ public class Login extends HttpServlet {
                         session.setAttribute("venditore", u);
 			session.setAttribute("Utente", "venditore");
                         request.setAttribute("Seller", true);
-                        request.getRequestDispatcher("venditore.jsp").forward(request, response);
+                        request.getRequestDispatcher("/M3/venditore.jsp").forward(request, response);
                     }
                     else
                     {
@@ -87,13 +87,13 @@ public class Login extends HttpServlet {
 			session.setAttribute("Utente", "cliente");
                         request.setAttribute("Buyer", true);
                         request.setAttribute("listaArticoli", listaArticoli);
-                        request.getRequestDispatcher("cliente.jsp")
+                        request.getRequestDispatcher("/M3/cliente.jsp")
                                 .forward(request, response);
                     }
                 }
             }
                 request.setAttribute("error", "Username or Password are incorrect, try again");
-                request.getRequestDispatcher("login.jsp").forward(request, response);
+                request.getRequestDispatcher("/M3/login.jsp").forward(request, response);
             }
         
  

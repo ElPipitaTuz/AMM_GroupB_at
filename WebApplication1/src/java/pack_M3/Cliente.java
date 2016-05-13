@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author albertotuzzi
  */
-@WebServlet(name = "Cliente", urlPatterns = {"/cliente.html"})
+@WebServlet(name = "Cliente", urlPatterns = {"/M3/cliente.html"})
 public class Cliente extends HttpServlet {
 
     /**
@@ -43,7 +43,7 @@ public class Cliente extends HttpServlet {
         //accesso login --> cliente
         if(session.getAttribute("logId") == null){
             request.setAttribute("Seller", true);
-            request.getRequestDispatcher("cliente.jsp").forward(request, response);
+            request.getRequestDispatcher("/M3/cliente.jsp").forward(request, response);
         }
         
         //accesso per URL cliente
@@ -51,7 +51,7 @@ public class Cliente extends HttpServlet {
             switch ((String)session.getAttribute("Utente")){
                 case ("venditore"): {
                     request.setAttribute("Seller", true);
-                    request.getRequestDispatcher("cliente.jsp").forward(request, response);
+                    request.getRequestDispatcher("/M3/cliente.jsp").forward(request, response);
                     }
                 case ("cliente"): { 
                                             
@@ -62,7 +62,7 @@ public class Cliente extends HttpServlet {
                         request.setAttribute("riepilogoOgg", true);
                         
                         
-                        request.getRequestDispatcher("cliente.jsp").forward(request, response);                     
+                        request.getRequestDispatcher("/M3/cliente.jsp").forward(request, response);                     
                     }  
                     
                     else if (request.getParameter("objCodeChoosen") != null){
@@ -73,12 +73,12 @@ public class Cliente extends HttpServlet {
                         
                             request.setAttribute("obj", o2);
                             request.setAttribute("acquistato", true);
-                            request.getRequestDispatcher("cliente.jsp").forward(request, response);
+                            request.getRequestDispatcher("/M3/cliente.jsp").forward(request, response);
                         }
                         
                         else {
                             request.setAttribute("rifiutato", true);
-                            request.getRequestDispatcher("cliente.jsp").forward(request, response);
+                            request.getRequestDispatcher("/M3/cliente.jsp").forward(request, response);
                         }
                     }
                         
@@ -86,7 +86,7 @@ public class Cliente extends HttpServlet {
                         request.setAttribute("Buyer", true);
                         
                         request.setAttribute("listaArticoli", listaArticoli);
-                        request.getRequestDispatcher("cliente.jsp").forward(request, response);                     
+                        request.getRequestDispatcher("/M3/cliente.jsp").forward(request, response);                     
                     }
                 }
             }

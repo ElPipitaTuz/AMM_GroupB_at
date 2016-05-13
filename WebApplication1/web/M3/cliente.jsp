@@ -47,10 +47,10 @@
         
         <c:when test="${Buyer == true}"> 
             
-    <h2><b>Hi ${Utente_cliente.nomeCliente}, welcome to the Merch Section</b></h2>
+    <h2><b>Hi ${cliente.nomeCliente}, welcome to the Merch Section</b></h2>
     
     <p>your credit:</p>
-            <p>${Utente_cliente.saldo} $</p>
+            <p>${cliente.saldo} $</p>
     
     <p>scroll down and click on "add to cart" to select the items you desire</p>
     
@@ -73,26 +73,26 @@
                 </tr>
                
                 <tr class="dispari">
-                    <td> ${Articolo.objName} </td>
-                    <td> <img title="${Articolo.objName}" src="${Articolo.objURL}" 
-                              width="70" height="90" alt="${Articolo.objName}"/> </td>
-                    <td> ${Articolo.objNumber} </td>
-                    <td> ${Articolo.objNumber} € </td>
+                    <td> ${obj.objName} </td>
+                    <td> <img title="${obj.objName}" src="${obj.objURL}" 
+                              width="70" height="90" alt="${obj.objName}"/> </td>
+                    <td> ${obj.objNumber} </td>
+                    <td> ${obj.objNumber} € </td>
                 </tr>
             </table>
                 
-            <p> <a href="Cliente.html?objCodeChoosen=${Articolo.getobjCode()}"> Confirm buying </a> </p>
+            <p> <a href="Cliente.html?objCodeChoosen=${obj.getobjCode()}"> Confirm buying </a> </p>
             </div>
         </c:when>  
             
         <c:when test="${acquistato == true}">
                 <p> Object bought </p>
-                <p> <a href="Cliente.html"> Go on </a> </p>
+                <p> <a href="/M3/Cliente.html"> Go on </a> </p>
         </c:when>
                 
-        <c:when test="${Noacquistato}">
+        <c:when test="${rifiutato == true}">
             <p> Warning, not enough credit! </p>
-            <p> <a href="Cliente.html"> Go on </a> </p>
+            <p> <a href="/M3/Cliente.html"> Go on </a> </p>
         </c:when>
                 
         </c:choose>

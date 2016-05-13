@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author albertotuzzi
  */
-@WebServlet(name = "Venditore", urlPatterns = {"/venditore.html"})
+@WebServlet(name = "Venditore", urlPatterns = {"/M3/venditore.html"})
 public class Venditore extends HttpServlet {
 
     /**
@@ -39,14 +39,14 @@ public class Venditore extends HttpServlet {
         //Controllo per accesso da Login a Venditore, passando per il link senza fare il login
         if (session.getAttribute("logId") == null){
             request.setAttribute("Buyer", true);
-            request.getRequestDispatcher("venditore.jsp").forward(request, response);
+            request.getRequestDispatcher("/M3/venditore.jsp").forward(request, response);
         }
 
         else if(session.getAttribute("logId") != null){
             switch ((String)session.getAttribute("Utente")){
                 case("cliente"): {
                     request.setAttribute("Buyer", true);
-                    request.getRequestDispatcher("venditore.jsp").forward(request, response);
+                    request.getRequestDispatcher("/M3/venditore.jsp").forward(request, response);
                 }
                 case ("venditore"):{
                     //Form Venditore
@@ -79,12 +79,12 @@ public class Venditore extends HttpServlet {
                         
                             request.setAttribute("ObjectAdded", nObj);
                             request.setAttribute("riepilogoIns", true);
-                            request.getRequestDispatcher("venditore.jsp").forward(request, response);
+                            request.getRequestDispatcher("/M3/venditore.jsp").forward(request, response);
                     
                         }
                         else {
                             request.setAttribute("noCompilato", true);
-                            request.getRequestDispatcher("venditore.jsp").forward(request, response);
+                            request.getRequestDispatcher("/M3/venditore.jsp").forward(request, response);
                         }
                 }   }
             }
