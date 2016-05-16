@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author albertotuzzi
  */
-@WebServlet(name = "Login", urlPatterns = {"/login.html"})
+@WebServlet(name = "Login", urlPatterns = {"/M3/login.html"})
 public class Login extends HttpServlet {
 
     /**
@@ -35,8 +35,8 @@ public class Login extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         HttpSession session = request.getSession();
-	String username =request.getParameter("Username");
-        String password =request.getParameter("Password");
+	String username =request.getParameter("usrnm");
+        String password =request.getParameter("psswrd");
         
         ArrayList<Articolo> listaArticoli = BacuccuFactory.getInstance().getArticoloList();
                 
@@ -47,13 +47,13 @@ public class Login extends HttpServlet {
                     case ("cliente"): {
                         request.setAttribute("listaArticoli", listaArticoli);
                         request.setAttribute("Buyer", true);
-                        request.getRequestDispatcher("cliente.jsp").forward(request, response);
+                        request.getRequestDispatcher("/M3/cliente.jsp").forward(request, response);
                         break;
                     }
                     case ("venditore"): {
                         request.setAttribute("Seller", true);
                         request.setAttribute("riepilogoOgg", false);
-                        request.getRequestDispatcher("venditore.jsp").forward(request, response);
+                        request.getRequestDispatcher("/M3/venditore.jsp").forward(request, response);
                         break;}
                     }   
             }
@@ -67,34 +67,38 @@ public class Login extends HttpServlet {
         
             ArrayList<Utente_venditore> listaVenditori = BacuccuFactory.getInstance().getVenditoreList();
             
-            for(Utente_venditore u : listaVenditori)
+            for(Utente_venditore v : listaVenditori)
             {
-                if(u.getusrnm().equals(username) && u.getpsswrd().equals(password))
+                if(v.getusrnm().equals(username) && v.getpsswrd().equals(password))
                 {   
                     session.setAttribute("logId", true);
-                    session.setAttribute("cf", u.getcf());
-                    
-                    if(u instanceof Utente_venditore)
-                    {
-                        session.setAttribute("venditore", u);
-			session.setAttribute("Utente", "venditore");
-                        request.setAttribute("Seller", true);
-                        request.getRequestDispatcher("/M3/venditore.jsp").forward(request, response);
-                    }
-                    else
-                    {
-                        session.setAttribute("cliente", u);
+                    session.setAttribute("cf", v.getcf());
+                    session.setAttribute("venditore", v);
+	            session.setAttribute("Utente", "venditore");
+                    request.setAttribute("Seller", true);
+                    request.getRequestDispatcher("/M3/venditore.jsp").forward(request, response);
+                }
+            }
+            
+            ArrayList<Utente_cliente> listaClienti = BacuccuFactory.getInstance().getClienteList();
+            
+            for(Utente_cliente c : listaClienti){
+                
+                if(c.getusrnm().equals(username) && c.getpsswrd().equals(password))
+                {
+                        session.setAttribute("logId", true);
+                        session.setAttribute("cf", c.getcf());
+                        session.setAttribute("cliente", c);
 			session.setAttribute("Utente", "cliente");
                         request.setAttribute("Buyer", true);
                         request.setAttribute("listaArticoli", listaArticoli);
-                        request.getRequestDispatcher("/M3/cliente.jsp")
-                                .forward(request, response);
-                    }
+                        request.getRequestDispatcher("/M3/cliente.jsp").forward(request, response);
                 }
             }
-                request.setAttribute("error", "Username or Password are incorrect, try again");
+            
+                request.setAttribute("error", "Username or Password are incorrect, please try again");
                 request.getRequestDispatcher("/M3/login.jsp").forward(request, response);
-            }
+        }
         
  
         

@@ -56,7 +56,7 @@
         <input type="password" name="psswrd" 
                id="psswrd" value="psswrd" />
         <br />
-        <button type="submit" name="submit" value="Login">enter</button>  
+        <button type="submit" name="Submit" value="Login">enter</button>  
         
         </form>
     </div>
