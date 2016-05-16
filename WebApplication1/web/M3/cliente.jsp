@@ -47,10 +47,12 @@
         
         <c:when test="${Buyer == true}"> 
             
-    <h2><b>Hi ${cliente.nomeCliente}, welcome to the Merch Section</b></h2>
+    <h2><b>Hi ${cliente.getnomeCliente()}, welcome to the Merch Section</b></h2>
     
+    <p>CF:</p>
+            <p>${cliente.getcf()}</p>
     <p>your credit:</p>
-            <p>${cliente.saldo} $</p>
+            <p>${cliente.getSaldo().getSaldo()} $</p>
     
     <p>scroll down and click on "add to cart" to select the items you desire</p>
     
@@ -77,7 +79,7 @@
                     <td> <img title="${obj.objName}" src="${obj.objURL}" 
                               width="70" height="90" alt="${obj.objName}"/> </td>
                     <td> ${obj.objNumber} </td>
-                    <td> ${obj.objNumber} € </td>
+                    <td> ${obj.objPrice} $ </td>
                 </tr>
             </table>
                 

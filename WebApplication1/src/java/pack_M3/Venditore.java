@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author albertotuzzi
  */
-@WebServlet(name = "Venditore", urlPatterns = {"/M3/venditore.html"})
+@WebServlet(name = "Venditore", urlPatterns = {"/M3/Venditore"})
 public class Venditore extends HttpServlet {
 
     /**
@@ -50,15 +50,15 @@ public class Venditore extends HttpServlet {
                 }
                 case ("venditore"):{
                     //Form Venditore
-                    if(request.getParameter("SubmitVenditore") != null){
+                    if(request.getParameter("SubmitSell") != null){
                         Articolo nObj = new Articolo();
-                        nObj.setobjCode(request.getParameter("ObjectCode"));
-                        nObj.setobjName(request.getParameter("ObjectName"));
-                        nObj.setobjURL(request.getParameter("URL"));
-                        nObj.setobjDescr(request.getParameter("Descrizione"));
+                        nObj.setobjCode(request.getParameter("objCode"));
+                        nObj.setobjName(request.getParameter("objName"));
+                        nObj.setobjURL(request.getParameter("objURL"));
+                        nObj.setobjDescr(request.getParameter("objDescr"));
                                                                     
                         try {
-                            nObj.setobjNumber(Integer.parseInt(request.getParameter("Quantita")));
+                            nObj.setobjNumber(Integer.parseInt(request.getParameter("objNumber")));
                         } 
                         
                         catch (Exception e) {
@@ -66,7 +66,7 @@ public class Venditore extends HttpServlet {
                         }
 
                         try {
-                            nObj.setobjPrice(Double.parseDouble(request.getParameter("Prezzo")));
+                            nObj.setobjPrice(Double.parseDouble(request.getParameter("objPrice")));
                         } 
 
                         catch (Exception e) {

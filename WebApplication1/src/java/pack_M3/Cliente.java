@@ -51,7 +51,7 @@ public class Cliente extends HttpServlet {
             switch ((String)session.getAttribute("Utente")){
                 case ("venditore"): {
                     request.setAttribute("Seller", true);
-                    request.getRequestDispatcher("/M3/cliente.jsp").forward(request, response);
+                    request.getRequestDispatcher("/M3/venditore.jsp").forward(request, response);
                     }
                 case ("cliente"): { 
                                             

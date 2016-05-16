@@ -20,15 +20,6 @@ public class Utente_venditore {
     
     //cotruttore
     
-    public Utente_venditore(){
-    
-        nomeVenditore="";
-        cognomeVenditore="";
-        cf=0;
-        usrnm="";
-        psswrd="";
-    
-    }
     
     //metodi//
     
@@ -40,7 +31,7 @@ public class Utente_venditore {
         this.nomeVenditore = nomeVenditore;
     }
     
-    public String getconomeVenditore(){
+    public String getcognomeVenditore(){
         return cognomeVenditore;
     }
 

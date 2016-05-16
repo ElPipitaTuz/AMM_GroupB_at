@@ -52,13 +52,19 @@
         </c:when>
         
             <c:when test="${Seller == true}">
-            <h2><b>Welcome back mr. ${venditore.nomeVenditore} ${venditore.cognomeVenditore}</b></h2>
+            <h2><b>Welcome back mr. ${venditore.getnomeVenditore()} ${venditore.getcognomeVenditore()}</b></h2>
+            <p>CF:</p>
+            <p>${venditore.getcf()}</p>
             <p>your credit:</p>
-            <p>${venditore.saldo} $</p>
+            <p>${venditore.getSaldo().getSaldo()} $</p>
            
 
          <h3><strong><b>New Object</b></strong></h3>
-<form action="/M3/venditore.html" method="post"> 
+<form action="Venditore" method="post"> 
+        <label for="objcode">Object code</label>
+        <input type="text" name="objCode" 
+               id="objcode" value="objcode" />
+        <br />
         <label for="objname">Object name</label>
         <input type="text" name="objName" 
                id="objname" value="objname" />
@@ -79,7 +85,7 @@
         <input type="number" name="objNumber" 
                id="objNumber" value="0" />
         <br />
-        <button type="submit">submit</button>
+        <button type="submit" name="SubmitSell" value="Venditore">submit</button>
         </form>
         </div>
             
