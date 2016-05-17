@@ -37,7 +37,7 @@ public class Cliente extends HttpServlet {
         HttpSession session = request.getSession(false);
         request.setAttribute("riepilogoOgg", false);
         
-        ArrayList<Articolo> listaArticoli = new ArrayList<>();
+        ArrayList<Articolo> listaArticoli = new ArrayList<Articolo>();
         listaArticoli = BacuccuFactory.getInstance().getArticoloList();
         
         //accesso login --> cliente
@@ -56,18 +56,19 @@ public class Cliente extends HttpServlet {
                 case ("cliente"): { 
                                             
                     if (request.getParameter("objCode") != null){
-                        Articolo o1 = BacuccuFactory.getInstance().getArticolo(Integer.parseInt(request.getParameter("objCode")));
+                        String code = request.getParameter("objCode");
+                        Articolo o1 = BacuccuFactory.getInstance().getArticolo(code);
                     
                         request.setAttribute("obj", o1);
                         request.setAttribute("riepilogoOgg", true);
-                        
-                        
-                        request.getRequestDispatcher("/M3/cliente.jsp").forward(request, response);                     
+                        request.getRequestDispatcher("/M3/cliente.jsp").forward(request, response); 
                     }  
                     
-                    else if (request.getParameter("objCodeChoosen") != null){
-                        Double cnt = BacuccuFactory.getInstance().getCliente((int) session.getAttribute("objCode")).getSaldo().getSaldo();
-                        Articolo o2 = BacuccuFactory.getInstance().getArticolo(Integer.parseInt(request.getParameter("objCodeChoosen")));
+                    else if (request.getParameter("objCodeCh") != null){
+                        String codech = request.getParameter("objCodeCh");
+                        Articolo o2 = BacuccuFactory.getInstance().getArticolo(codech);
+                        Double cnt = BacuccuFactory.getInstance().getCliente((int) session.getAttribute("cf")).getSaldo().getSaldo();
+                        
                                                                                         
                         if (cnt > o2.getobjPrice()) {
                         

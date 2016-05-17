@@ -33,7 +33,7 @@ public class BacuccuFactory {
         //saldo
         
         Saldo s1 = new Saldo();
-        s1.setSaldo(938.69);
+        s1.setSaldo(938.06);
         
         Saldo s2 = new Saldo();
         s2.setSaldo(2232.41);
@@ -42,7 +42,7 @@ public class BacuccuFactory {
         s3.setSaldo(1345.54);
         
         Saldo s4 = new Saldo();
-        s1.setSaldo(434.29);
+        s1.setSaldo(0.23);
     
         //articoli
         Articolo articolo_1 = new Articolo();
@@ -199,11 +199,11 @@ public class BacuccuFactory {
         return listaArticoli;
     }
     
-    public Articolo getArticolo(int num_in)
+    public Articolo getArticolo(String c_in)
     {
         for(Articolo a : listaArticoli)
         {
-            if(a.getobjNumber() == num_in)
+            if(a.getobjCode().equals(c_in))
                 return a;
         }
         

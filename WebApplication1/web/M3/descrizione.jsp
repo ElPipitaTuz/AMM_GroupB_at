@@ -49,7 +49,13 @@
                and original Bacuccu F.C. match jerseys 
                and out-of-pitch gadgets such as:</p>
   
-           <jsp:include page="listaOggetti.jsp"/>
+          <ul>
+        <li>Bacuccu f.c. Game HOME kit</li>
+        <li>Bacuccu f.c. Game AWAY kit</li>
+        <li>Bacuccu f.c. casual t-shirt</li>
+        <li>Bacuccu f.c. Game socks</li>
+        <li>Bacuccu f.c. key keeper</li>
+    </ul>
 
            <p>and many more others...</p>
   <!-- fine presentazione merchandise -->

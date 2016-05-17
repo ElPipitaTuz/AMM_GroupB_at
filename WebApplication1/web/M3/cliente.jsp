@@ -59,7 +59,25 @@
         <h3><strong>Our Stuff</strong></h3>
         
          
-            <jsp:include page="tabellaOggetti.jsp"/>
+            <table>
+            <tr>
+                <th><b>Object</b></th>
+                <th><b>Photo</b></th>
+                <th><b>Remaining</b></th>
+                <th><b>Price</b></th>
+                <th><b>Add</b></th>
+            </tr>
+            <c:forEach var="table" items="${listaArticoli}">
+            <tr class="dispari">
+                <td>${table.objName}</td>
+                <td><img title="${table.objName}" alt="${table.objName}" 
+                         src="images_web/scudetto_bacuccu.jpg" width="70" height="90"></td>
+                <td>${table.objNumber}</td>
+                <td>${table.objPrice} $</td>
+                <td><a href="cliente.html?objCode=${table.objCode}"<b>Add to Cart</b></a></td>
+            </tr>
+            </c:forEach>  
+        </table>    
             
         
         </c:when> 
@@ -83,18 +101,18 @@
                 </tr>
             </table>
                 
-            <p> <a href="Cliente.html?objCodeChoosen=${obj.getobjCode()}"> Confirm buying </a> </p>
+            <p> <a href="cliente.html?objCodeCh=${obj.objCode}"> Confirm buying </a> </p>
             </div>
         </c:when>  
             
         <c:when test="${acquistato == true}">
                 <p> Object bought </p>
-                <p> <a href="/M3/Cliente.html"> Go on </a> </p>
+                <p> <a href="cliente.html"> Go on </a> </p>
         </c:when>
                 
         <c:when test="${rifiutato == true}">
             <p> Warning, not enough credit! </p>
-            <p> <a href="/M3/Cliente.html"> Go on </a> </p>
+            <p> <a href="cliente.html"> Go on </a> </p>
         </c:when>
                 
         </c:choose>
