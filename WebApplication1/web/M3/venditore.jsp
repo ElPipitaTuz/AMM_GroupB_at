@@ -41,15 +41,17 @@
         <div class="contenuto">
             
             <c:choose>
+                
+        <c:when test="${Buyer == true || Seller == false}">
+            <p>Restricted section, please login to continue</p>    
+        </c:when>
             
         <c:when test="${noCompilato == true}">
             <p> You have to fill all the fields </p>
             <p> <a href="Login"> Go on </a> </p>
         </c:when>
             
-        <c:when test="${Buyer == true}">
-            <p>Restricted section, please login to continue</p>    
-        </c:when>
+        
         
             <c:when test="${Seller == true}">
             <h2><b>Welcome back mr. ${venditore.getnomeVenditore()} ${venditore.getcognomeVenditore()}</b></h2>
@@ -85,13 +87,13 @@
         <input type="number" name="objNumber" 
                id="objNumber" value="0" />
         <br />
-        <button type="submit" name="SubmitSell" value="Venditore">submit</button>
+        <button type="submit" name="SubmitSell" value="new product">submit</button>
         </form>
         </div>
             
             </c:when>
                 
-        <c:when test="${riepilogo == true}">
+        <c:when test="${riepilogoIns == true}">
             <div>
             <h3> Your Object </h3>
             <table>  
@@ -106,7 +108,7 @@
                 
                 <tr>
                     <td> ${ObjectAdded.objName} </td>
-                    <td> <img title="${ObjectAdded.objName}" src="${ObjectAdded.URL}" 
+                    <td> <img title="${ObjectAdded.objName}" src="${ObjectAdded.objURL}" 
                               width="70" height="90" alt="${ObjectAdded.objName}"/> </td>
                     <td class="Descrizione"> ${ObjectAdded.objDescr} </td>
                     <td> ${ObjectAdded.objPrice} </td>
