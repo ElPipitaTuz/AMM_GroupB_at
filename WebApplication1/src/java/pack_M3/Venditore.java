@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author albertotuzzi
  */
-@WebServlet(name = "Venditore", urlPatterns = {"/M3/Venditore"})
+@WebServlet(name = "Venditore", urlPatterns = {"/M3/venditore.html"})
 public class Venditore extends HttpServlet {
 
     /**
@@ -46,7 +46,7 @@ public class Venditore extends HttpServlet {
             switch ((String)session.getAttribute("Utente")){
                 case("cliente"): {
                     request.setAttribute("Buyer", true);
-                    request.getRequestDispatcher("/M3/venditore.jsp").forward(request, response);
+                    request.getRequestDispatcher("/M3/cliente.jsp").forward(request, response);
                 }
                 case ("venditore"):{
                     //Form Venditore
@@ -86,7 +86,10 @@ public class Venditore extends HttpServlet {
                             request.setAttribute("noCompilato", true);
                             request.getRequestDispatcher("/M3/venditore.jsp").forward(request, response);
                         }
-                }   }
+                    }
+                    
+                
+                }    
             }
         } 
     }

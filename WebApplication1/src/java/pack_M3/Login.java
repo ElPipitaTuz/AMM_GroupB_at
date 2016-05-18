@@ -86,13 +86,13 @@ public class Login extends HttpServlet {
                 
                 if(c.getusrnm().equals(username) && c.getpsswrd().equals(password))
                 {
-                        session.setAttribute("logId", true);
-                        session.setAttribute("cf", c.getcf());
-                        session.setAttribute("cliente", c);
-			session.setAttribute("Utente", "cliente");
-                        request.setAttribute("Buyer", true);
-                        request.setAttribute("listaArticoli", listaArticoli);
-                        request.getRequestDispatcher("/M3/cliente.jsp").forward(request, response);
+                    session.setAttribute("logId", true);
+                    session.setAttribute("cf", c.getcf());
+                    session.setAttribute("cliente", c);
+		    session.setAttribute("Utente", "cliente");
+                    request.setAttribute("Buyer", true);
+                    request.setAttribute("listaArticoli", listaArticoli);
+                    request.getRequestDispatcher("/M3/cliente.jsp").forward(request, response);
                 }
             }
             

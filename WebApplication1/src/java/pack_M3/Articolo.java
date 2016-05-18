@@ -81,6 +81,10 @@ public class Articolo {
         this.objCode = objCode;
     }
   
+    public void decrementobjNumber(){
+        this.objNumber = objNumber--;
+    
+    }
     
 }
 

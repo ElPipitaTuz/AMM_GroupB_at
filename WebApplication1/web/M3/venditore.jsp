@@ -42,7 +42,7 @@
             
             <c:choose>
                 
-        <c:when test="${Buyer == true || Seller == false}">
+        <c:when test="${Buyer == true}">
             <p>Restricted section, please login to continue</p>    
         </c:when>
             
@@ -62,7 +62,7 @@
            
 
          <h3><strong><b>New Object</b></strong></h3>
-<form action="Venditore" method="post"> 
+<form action="venditore.html" method="post"> 
         <label for="objcode">Object code</label>
         <input type="text" name="objCode" 
                id="objcode" value="objcode" />
@@ -116,7 +116,7 @@
                 </tr>
             </table>
                 
-            <p> <a href="Login"> Another new object? </a> </p>
+            <p> <a href="Login"> Confirm and proceed </a> </p>
                 
             </div>
         </c:when>

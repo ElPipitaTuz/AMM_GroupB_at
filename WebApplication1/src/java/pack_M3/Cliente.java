@@ -75,6 +75,7 @@ public class Cliente extends HttpServlet {
                             request.setAttribute("obj", o2);
                             request.setAttribute("acquistato", true);
                             request.getRequestDispatcher("/M3/cliente.jsp").forward(request, response);
+                            BacuccuFactory.getInstance().getArticolo("objCodeCh").decrementobjNumber();
                         }
                         
                         else {
