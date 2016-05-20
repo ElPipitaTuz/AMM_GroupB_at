@@ -1,0 +1,21 @@
+Fri May 20 12:32:38 CEST 2016 : Apache Derby Network Server - 10.10.2.0 - (1582446) started and ready to accept connections on port 1527
+----------------------------------------------------------------
+Fri May 20 12:32:39 CEST 2016:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0154-cdb9-5f2b-fffff81c49ac 
+on database directory /Users/albertotuzzi/NetBeansProjects/Amm21marzo/AMM_GroupB_at/WebApplication1/WEB_INF/db/ammdb with class loader sun.misc.Launcher$AppClassLoader@2626b418 
+Loaded from file:/Applications/NetBeans/glassfish-4.1.1/javadb/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_73-b02
+user.dir=/Applications/NetBeans/glassfish-4.1.1/javadb
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.7.5
+derby.system.home=/Users/albertotuzzi/NetBeansProjects/Amm21marzo/AMM_GroupB_at/WebApplication1/WEB_INF/db
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Fri May 20 12:32:43 CEST 2016:
+Shutting down instance a816c00e-0154-cdb9-5f2b-fffff81c49ac on database directory /Users/albertotuzzi/NetBeansProjects/Amm21marzo/AMM_GroupB_at/WebApplication1/WEB_INF/db/ammdb with class loader sun.misc.Launcher$AppClassLoader@2626b418 
+Fri May 20 12:32:43 CEST 2016 Thread[DRDAConnThread_3,5,main] (DATABASE = ammdb), (DRDAID = {2}), Database 'ammdb' shutdown.
+----------------------------------------------------------------
+Fri May 20 12:33:40 CEST 2016: Shutting down Derby engine
+----------------------------------------------------------------

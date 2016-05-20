@@ -7,6 +7,8 @@ package pack_M3;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,11 +20,11 @@ import javax.servlet.http.HttpSession;
  *
  * @author albertotuzzi
  */
-@WebServlet(name = "Login", urlPatterns = {"/M3/Login"})
+@WebServlet(name = "Login", urlPatterns = {"/M3/Login"}, loadOnStartup = 0)
 public class Login extends HttpServlet {
     
-    /**private static final String JDBC_DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
-    private static final String DB_CLEAN_PATH = "../../web/WEB-INF/db/ammdb";               , loadOnStartup = 0
+    private static final String JDBC_DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
+    private static final String DB_CLEAN_PATH = "../../web/WEB-INF/db/ammdb";               
     private static final String DB_BUILD_PATH = "WEB-INF/db/ammdb";
     
     @Override 
@@ -41,9 +43,9 @@ public class Login extends HttpServlet {
 
         }
 
-        ObjectFactory.getInstance().setConnectionString(dbConnection);
+        BacuccuFactory.getInstance().setConnectionString(dbConnection);
 
-    } */
+    } 
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

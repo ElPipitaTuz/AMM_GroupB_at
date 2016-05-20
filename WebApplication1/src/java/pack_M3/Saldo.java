@@ -12,6 +12,7 @@ package pack_M3;
 public class Saldo {
     
     private double saldo;
+    private int cf_poss;
     
     public Saldo(){
     
@@ -26,5 +27,14 @@ public class Saldo {
     public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
+    
+    public double getPoss() {
+        return cf_poss;
+    }
+
+    public void setPoss(int cf_in) {
+        this.cf_poss = cf_in;
+    }
+    
     
 }

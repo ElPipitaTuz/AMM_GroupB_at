@@ -9,11 +9,18 @@ package pack_M3;
  *
  * @author albertotuzzi
  */
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 
 public class BacuccuFactory {
     private static BacuccuFactory costr;
+    private String connectionString;
     public static BacuccuFactory getInstance() {
         if (costr == null) {
             costr = new BacuccuFactory();
@@ -160,6 +167,59 @@ public class BacuccuFactory {
           
     }
     
+    /** public Utente_cliente getUtentecliente(String usrnm, String psswrd){
+        try{
+              Connection conn = DriverManager.getConnection(connectionString, "albertotuzzi", "alberto");
+              
+              String query1 = "select * from cliente where username = ? "
+                             + "and password = ?"; 
+              
+              PreparedStatement stmt = conn.prepareStatement(query1);
+              stmt.setString(1, usrnm);
+              stmt.setString(2, psswrd);
+              
+              ResultSet res = stmt.executeQuery();
+              
+              if(res.next()){
+                Utente_cliente cliente_ = new Utente_cliente();
+                cliente_.setnomeCliente(res.getString("nome"));
+                cliente_.setcognomeCliente(res.getString("cognome"));
+                cliente_.setcf(res.getInt("cf"));
+                cliente_.setusrnm(res.getString("username"));
+                cliente_.setpsswrd(res.getString("password"));
+                  
+                String query2 = "select * from saldo "
+                          + "join posscredito on saldo.posscredito = cliente.cf "
+                          + "where saldo.posscredito = " + Utente_cliente.getcf();
+                  
+                Statement st = conn.createStatement(query2);
+                ResultSet res2 = st.executeQuery();
+                  
+                while(res2.next()){
+                    Saldo s = new Saldo();
+                    s.setPoss(res2.getInt("cf"));
+                    s.setSaldo(res2.getDouble("credito"));
+                    cliente_.setSaldo(s);
+                    
+                }
+                   st.close();
+                   stmt.close();
+                   conn.close();
+                   return cliente_;
+            } 
+            stmt.close();
+            conn.close();  
+              
+           
+        }
+        
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+        return null;
+    } */
+    
     public ArrayList<Utente_cliente> getClienteList()
     {
         return listaClienti;
@@ -209,6 +269,16 @@ public class BacuccuFactory {
         
         return null;
     }
+
+    public void setConnectionString(String dbConnection) {
+        this.connectionString = dbConnection;
+    }
+    
+    public String getConnectionString(){
+        return this.connectionString;
+    
+  }
+    
     
     
 }
