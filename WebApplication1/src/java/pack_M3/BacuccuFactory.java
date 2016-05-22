@@ -167,58 +167,118 @@ public class BacuccuFactory {
           
     }
     
-    /** public Utente_cliente getUtentecliente(String usrnm, String psswrd){
-        try{
-              Connection conn = DriverManager.getConnection(connectionString, "albertotuzzi", "alberto");
-              
-              String query1 = "select * from cliente where username = ? "
-                             + "and password = ?"; 
-              
-              PreparedStatement stmt = conn.prepareStatement(query1);
-              stmt.setString(1, usrnm);
-              stmt.setString(2, psswrd);
-              
-              ResultSet res = stmt.executeQuery();
-              
-              if(res.next()){
-                Utente_cliente cliente_ = new Utente_cliente();
-                cliente_.setnomeCliente(res.getString("nome"));
-                cliente_.setcognomeCliente(res.getString("cognome"));
-                cliente_.setcf(res.getInt("cf"));
-                cliente_.setusrnm(res.getString("username"));
-                cliente_.setpsswrd(res.getString("password"));
-                  
-                String query2 = "select * from saldo "
-                          + "join posscredito on saldo.posscredito = cliente.cf "
-                          + "where saldo.posscredito = " + Utente_cliente.getcf();
-                  
-                Statement st = conn.createStatement(query2);
-                ResultSet res2 = st.executeQuery();
-                  
-                while(res2.next()){
+    
+    public Utente_cliente getCliente(String username, String password)
+    {
+        try
+        {
+            Connection conn = DriverManager.getConnection(connectionString, 
+                            "albertotuzzi",
+                            "lel");
+            // sql command
+            String query = "select * from cliente where "
+                    + "password = ? and username = ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            // dati
+            stmt.setString(1, password);
+            stmt.setString(2, username);
+            //
+            ResultSet set = stmt.executeQuery();
+            
+            if(set.next())
+            {
+                Utente_cliente clientesql = new Utente_cliente();
+                clientesql.setcf(set.getInt("cf"));
+                clientesql.setnomeCliente(set.getString("nome"));
+                clientesql.setcognomeCliente(set.getString("cognome"));
+                clientesql.setusrnm(set.getString("username"));
+                clientesql.setpsswrd(set.getString("password"));
+                // nuova query, corsiAssegnati
+                query = "select saldo.cf_creditore, saldo.credito from saldo "
+                        + "join cliente "
+                        + "on saldo.cf_creditore = ciente.cf "
+                        + "where cliente.cf="+clientesql.getcf();
+                Statement st = conn.createStatement();
+                ResultSet res2 = st.executeQuery(query);
+                while(res2.next())
+                {
                     Saldo s = new Saldo();
                     s.setPoss(res2.getInt("cf"));
                     s.setSaldo(res2.getDouble("credito"));
-                    cliente_.setSaldo(s);
-                    
+                    clientesql.setSaldo(s);
                 }
-                   st.close();
-                   stmt.close();
-                   conn.close();
-                   return cliente_;
-            } 
-            stmt.close();
-            conn.close();  
-              
-           
-        }
+                st.close();
+                stmt.close();
+                conn.close();
+                
+                return clientesql;
+            }
+            
         
-        catch(SQLException e){
-            e.printStackTrace();
         }
-        
+        catch(SQLException e)
+        {
+            
+        }
         return null;
-    } */
+    }
+       
+       
+    public Utente_venditore getVenditore(String username, String password)
+    {
+        try
+        {
+            Connection conn = DriverManager.getConnection(connectionString, 
+                            "albertotuzzi",
+                            "lel");
+            // sql command
+            String query = "select * from venditore where "
+                    + "password = ? and username = ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            // dati
+            stmt.setString(1, password);
+            stmt.setString(2, username);
+            //
+            ResultSet set = stmt.executeQuery();
+            
+            if(set.next())
+            {
+                Utente_venditore venditoresql = new Utente_venditore();
+                venditoresql.setcf(set.getInt("cf"));
+                venditoresql.setnomeVenditore(set.getString("nome"));
+                venditoresql.setcognomeVenditore(set.getString("cognome"));
+                venditoresql.setusrnm(set.getString("username"));
+                venditoresql.setpsswrd(set.getString("password"));
+                // nuova query, corsiAssegnati
+                query = "select saldo.cf_creditore, saldo.credito from saldo "
+                        + "join venditore "
+                        + "on saldo.cf_creditore = venditore.cf "
+                        + "where venditore.cf="+venditoresql.getcf();
+                Statement st = conn.createStatement();
+                ResultSet res2 = st.executeQuery(query);
+                while(res2.next())
+                {
+                    Saldo s = new Saldo();
+                    s.setPoss(res2.getInt("cf"));
+                    s.setSaldo(res2.getDouble("credito"));
+                    venditoresql.setSaldo(s);
+                }
+                st.close();
+                stmt.close();
+                conn.close();
+                
+                return venditoresql;
+            }
+            
+        
+        }
+        catch(SQLException e)
+        {
+            
+        }
+        return null;
+    }
+     
     
     public ArrayList<Utente_cliente> getClienteList()
     {
