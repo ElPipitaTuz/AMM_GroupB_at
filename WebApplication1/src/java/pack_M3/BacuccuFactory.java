@@ -278,8 +278,376 @@ public class BacuccuFactory {
         }
         return null;
     }
-     
     
+    
+    public Utente_cliente getCliente(int cf_in)
+    {
+        try 
+        {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "albertotuzzi", "lel");
+            // Query
+            String query = "select * from cliente "
+            + "where cf = ?";
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            // Si associano i valori
+            stmt.setInt(1, cf_in);
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+            
+             // ciclo sulle righe restituite
+            if(res.next()) 
+            {
+                Utente_cliente current = new Utente_cliente();
+                current.setcf(res.getInt("cf"));
+                current.setnomeCliente(res.getString("nome"));
+                current.setcognomeCliente(res.getString("cognome"));
+                current.setusrnm(res.getString("username"));
+                current.setpsswrd(res.getString("password"));
+                
+                query = "select saldo.cf_creditore, saldo.credito from saldo "
+                        + "join cliente "
+                        + "on saldo.cf_creditore = cliente.cf "
+                        + "where cliente.cf="+current.getcf();
+                Statement st = conn.createStatement();
+                ResultSet res2 = st.executeQuery(query);
+                while(res2.next())
+                {
+                    Saldo s = new Saldo();
+                    s.setPoss(res2.getInt("cf"));
+                    s.setSaldo(res2.getDouble("credito"));
+                    current.setSaldo(s);
+                }           
+                
+                st.close();
+                stmt.close();
+                conn.close();
+                return current;
+            }   
+            stmt.close();
+            conn.close();
+        } 
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public Utente_venditore getVenditore(int cf_in)
+    {
+        try 
+        {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "albertotuzzi", "lel");
+            // Query
+            String query = "select * from venditore"
+            + "where cf = ?";
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            // Si associano i valori
+            stmt.setInt(1, cf_in);
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+            
+             // ciclo sulle righe restituite
+            if(res.next()) 
+            {
+                Utente_venditore current = new Utente_venditore();
+                current.setcf(res.getInt("cf"));
+                current.setnomeVenditore(res.getString("nome"));
+                current.setcognomeVenditore(res.getString("cognome"));
+                current.setusrnm(res.getString("username"));
+                current.setpsswrd(res.getString("password"));
+                
+                query = "select saldo.cf_creditore, saldo.credito from saldo "
+                        + "join venditore "
+                        + "on saldo.cf_creditore = venditore.cf "
+                        + "where venditore.cf="+current.getcf();
+                Statement st = conn.createStatement();
+                ResultSet res2 = st.executeQuery(query);
+                while(res2.next())
+                {
+                    Saldo s = new Saldo();
+                    s.setPoss(res2.getInt("cf"));
+                    s.setSaldo(res2.getDouble("credito"));
+                    current.setSaldo(s);
+                }           
+                
+                st.close();
+                stmt.close();
+                conn.close();
+                return current;
+            }   
+            stmt.close();
+            conn.close();
+        } 
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    
+    public Articolo getArticolo(String code)
+    {
+        try 
+        {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "albertotuzzi", "lel");
+            // Query
+            String query = "select * from articolo "
+            + "where objcode = ?";
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            // Si associano i valori
+            stmt.setString(1, code);
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+            
+             // ciclo sulle righe restituite
+            if(res.next()) 
+            {
+                Articolo current = new Articolo();
+                current.setobjCode(res.getString("objcode"));
+                current.setobjName(res.getString("objname"));
+                current.setobjURL(res.getString("objurl"));
+                current.setobjDescr(res.getString("objdescr"));
+                current.setobjPrice(res.getDouble("objprice"));
+                current.setobjNumber(res.getInt("objnumber"));
+                
+                stmt.close();
+                conn.close();
+                return current;
+            }   
+            stmt.close();
+            conn.close();
+        } 
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    
+    public ArrayList<Utente_cliente> getClienteList()
+    {
+        ArrayList<Utente_cliente> listaClienti = new ArrayList<Utente_cliente>();
+        try 
+        {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "albertotuzzi", "lel");
+            Statement stmt = conn.createStatement();
+            String query = "select * from "
+            + "cliente'";
+            ResultSet set = stmt.executeQuery(query);
+            
+             // ciclo sulle righe restituite
+            while(set.next()) 
+            {
+                Utente_cliente current = new Utente_cliente();
+                current.setcf(set.getInt("cf"));
+                current.setnomeCliente(set.getString("nome"));
+                current.setcognomeCliente(set.getString("cognome"));
+                current.setusrnm(set.getString("username"));
+                current.setpsswrd(set.getString("password"));
+                listaClienti.add(current);
+            } 
+            
+            stmt.close();
+            conn.close();
+        } 
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+        }
+        return listaClienti;
+    }
+    
+    
+    public ArrayList<Utente_venditore> getVenditoreList()
+    {
+        ArrayList<Utente_venditore> listaVenditori = new ArrayList<Utente_venditore>();
+        try 
+        {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "albertotuzzi", "lel");
+            Statement stmt = conn.createStatement();
+            String query = "select * from "
+            + "venditore'";
+            ResultSet set = stmt.executeQuery(query);
+            
+             // ciclo sulle righe restituite
+            while(set.next()) 
+            {
+                Utente_venditore current = new Utente_venditore();
+                current.setcf(set.getInt("cf"));
+                current.setnomeVenditore(set.getString("nome"));
+                current.setcognomeVenditore(set.getString("cognome"));
+                current.setusrnm(set.getString("username"));
+                current.setpsswrd(set.getString("password"));
+                listaVenditori.add(current);
+            } 
+            
+            stmt.close();
+            conn.close();
+        } 
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+        }
+        return listaVenditori;
+    }
+    
+    
+    public ArrayList<Articolo> getArticoloList()
+    {
+        ArrayList<Articolo> listaArticoli = new ArrayList<Articolo>();
+        try 
+        {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "albertotuzzi", "lel");
+            Statement stmt = conn.createStatement();
+            String query = "select * from "
+            + "articolo'";
+            ResultSet set = stmt.executeQuery(query);
+            
+             // ciclo sulle righe restituite
+            while(set.next()) 
+            {
+                Articolo current = new Articolo();
+                current.setobjCode(set.getString("objcode"));
+                current.setobjName(set.getString("objname"));
+                current.setobjURL(set.getString("objurl"));
+                current.setobjDescr(set.getString("objdescr"));
+                current.setobjPrice(set.getDouble("objprice"));
+                current.setobjNumber(set.getInt("objnumber"));
+                listaArticoli.add(current);
+            } 
+            
+            stmt.close();
+            conn.close();
+        } 
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+        }
+        return listaArticoli;
+    }
+    
+    
+    
+    public void newArticolo(String code, String name, String URL, String Descr,
+            double price, int number) throws SQLException
+    {
+        Connection conn = DriverManager.getConnection(
+                BacuccuFactory.getInstance().getConnectionString(),
+                "albertotuzzi",
+                "lel");
+        
+        PreparedStatement newart = null;
+        
+        // Sql 
+        String insertart = "insert into articolo "
+                + "(objcode, objname, objurl, objdescr, objprice, objnumber) "
+                + "values (?,?,?,?,?,?)";
+        
+        try
+        {
+            conn.setAutoCommit(false);
+           
+            newart = conn.
+                   prepareStatement(insertart);
+           
+           // inserimento
+           newart.setString(1, code);
+           newart.setString(2, name);
+           newart.setString(3, URL);
+           newart.setString(4, Descr);
+           newart.setDouble(5, price);
+           newart.setInt(6, number);
+           
+           int c = newart.executeUpdate();
+           
+           if(c != 1)
+               conn.rollback();
+           
+           conn.commit();           
+        }catch(SQLException e)
+        {
+            try
+            {
+                conn.rollback();
+            }catch(SQLException e2)
+            {
+                
+            }
+        }
+        finally
+        {
+            if(newart != null)
+                newart.close();
+            
+            conn.setAutoCommit(true);
+            conn.close();
+        }    
+    }
+    
+    
+    public void delArticolo(String code) throws SQLException
+    {
+        Connection conn = DriverManager.getConnection(
+                BacuccuFactory.getInstance().getConnectionString(),
+                "albertotuzzi",
+                "lel");
+        
+        PreparedStatement delart = null;
+        
+        // Sql 
+        String dropart = "delete from articolo "
+                + "where objcode = ?";
+        
+        try
+        {
+            conn.setAutoCommit(false);
+           
+            delart = conn.
+                   prepareStatement(dropart);
+           
+           // inserimento
+           delart.setString(1, code);
+           
+           int c = delart.executeUpdate();
+           
+           if(c != 1)
+               conn.rollback();
+           
+           conn.commit();           
+        }catch(SQLException e)
+        {
+            try
+            {
+                conn.rollback();
+            }catch(SQLException e2)
+            {
+                
+            }
+        }
+        finally
+        {
+            if(delart != null)
+                delart.close();
+            
+            conn.setAutoCommit(true);
+            conn.close();
+        }    
+    }
+    
+     
+    /**
     public ArrayList<Utente_cliente> getClienteList()
     {
         return listaClienti;
@@ -330,6 +698,8 @@ public class BacuccuFactory {
         return null;
     }
 
+* */
+    
     public void setConnectionString(String dbConnection) {
         this.connectionString = dbConnection;
     }
