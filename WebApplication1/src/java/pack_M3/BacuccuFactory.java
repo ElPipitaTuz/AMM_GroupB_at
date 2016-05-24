@@ -597,9 +597,7 @@ public class BacuccuFactory {
     }
     
     
-    public void trans(float credito, int cf_creditore,
-            String code, String name, String URL, String Descr,
-            double price, int number) throws SQLException
+    public void trans(int cf_creditore, String code, int number) throws SQLException
     {
         Connection conn = DriverManager.getConnection(
                 BacuccuFactory.getInstance().getConnectionString(),
@@ -610,33 +608,43 @@ public class BacuccuFactory {
         PreparedStatement updateArticoli = null;
         
         // Sql 
-        String decrArticolo = "update articolo set objnumber = objnumber-1 "
+        if(number>1){
+            
+        String decrArticolo = "update articolo set objnumber = objnumber - 1 "
                 + "where objcode = ?";
-        String upSaldo = "update saldo s "
-                        + "set saldo.credito = saldo.credito-articolo.objprice "
-                        + "join articolo "
-                        + "where articolo.objcode="+code 
-                        + "and saldo.cf_creditore="+cf_creditore;
         
+        String upSaldo = "update cliente c, articolo a "
+                        + "set c.credito = c.credito - a.objprice "
+                        + "where a.objcode="+code 
+                        + "and c.cf="+cf_creditore;
         
-        try
-        {
-           conn.setAutoCommit(false);
+        conn.setAutoCommit(false);
            updateSaldo = conn.
                    prepareStatement(upSaldo);
            updateArticoli = conn.
                    prepareStatement(decrArticolo);
-           
-           // Saldo
-           updateSaldo.setFloat(1, credito);
-           updateSaldo.setInt(2, cf_creditore);
-           // Articolo
-           updateArticoli.setString(1, code);
-           updateArticoli.setString(2, name);
-           updateArticoli.setString(3, URL);
-           updateArticoli.setString(4, Descr);
-           updateArticoli.setDouble(5, price);
-           updateArticoli.setInt(6, number);
+        }
+        
+        else if(number<=1){
+            
+        String decrArticolo = "delete from articolo "
+                + "where objcode ="+code;
+        
+        String upSaldo = "update cliente c, articolo a "
+                        + "set c.credito = c.credito - a.objprice "
+                        + "where a.objcode="+code 
+                        + "and c.cf="+cf_creditore;
+        
+        conn.setAutoCommit(false);
+           updateSaldo = conn.
+                   prepareStatement(upSaldo);
+           updateArticoli = conn.
+                   prepareStatement(decrArticolo);
+        }
+        
+        
+        try
+        {
            
            int c1 = updateSaldo.executeUpdate();
            int c2 = updateArticoli.executeUpdate();
@@ -645,14 +653,16 @@ public class BacuccuFactory {
                conn.rollback();
            
            conn.commit();           
-        }catch(SQLException e)
+        }
+        catch(SQLException e)
         {
             try
             {
                 conn.rollback();
-            }catch(SQLException e2)
+            }
+            catch(SQLException e2)
             {
-                
+               e2.printStackTrace(); 
             }
         }
         finally
