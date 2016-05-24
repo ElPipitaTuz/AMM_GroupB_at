@@ -39,6 +39,7 @@ public class BacuccuFactory {
         
         //saldo
         
+        /*
         Saldo s1 = new Saldo();
         s1.setSaldo(938.06);
         
@@ -163,7 +164,7 @@ public class BacuccuFactory {
         vend_2.setpsswrd("lel");
         vend_2.setSaldo(s4);
         listaVenditori.add(vend_2);
-        
+        */
           
     }
     
@@ -597,6 +598,8 @@ public class BacuccuFactory {
     }
     
     
+   
+    
     public void delArticolo(String code) throws SQLException
     {
         Connection conn = DriverManager.getConnection(
@@ -640,6 +643,77 @@ public class BacuccuFactory {
         {
             if(delart != null)
                 delart.close();
+            
+            conn.setAutoCommit(true);
+            conn.close();
+        }    
+    }
+    
+    
+    public void trans(float credito, int cf_creditore,
+            String code, String name, String URL, String Descr,
+            double price, int number) throws SQLException
+    {
+        Connection conn = DriverManager.getConnection(
+                BacuccuFactory.getInstance().getConnectionString(),
+                "albertotuzzi",
+                "lel");
+        
+        PreparedStatement updateSaldo = null;
+        PreparedStatement updateArticoli = null;
+        
+        // Sql 
+        String decrArticolo = "update articolo set objnumber = objnumber-1 "
+                + "where objcode = ?";
+        String upSaldo = "update saldo s "
+                        + "set saldo.credito = saldo.credito-articolo.objprice "
+                        + "join articolo "
+                        + "where articolo.objcode="+code 
+                        + "and saldo.cf_creditore="+cf_creditore;
+        
+        
+        try
+        {
+           conn.setAutoCommit(false);
+           updateSaldo = conn.
+                   prepareStatement(upSaldo);
+           updateArticoli = conn.
+                   prepareStatement(decrArticolo);
+           
+           // Saldo
+           updateSaldo.setFloat(1, credito);
+           updateSaldo.setInt(2, cf_creditore);
+           // Articolo
+           updateArticoli.setString(1, code);
+           updateArticoli.setString(2, name);
+           updateArticoli.setString(3, URL);
+           updateArticoli.setString(4, Descr);
+           updateArticoli.setDouble(5, price);
+           updateArticoli.setInt(6, number);
+           
+           int c1 = updateSaldo.executeUpdate();
+           int c2 = updateArticoli.executeUpdate();
+           
+           if(c1 != 1 || c2 != 1)
+               conn.rollback();
+           
+           conn.commit();           
+        }catch(SQLException e)
+        {
+            try
+            {
+                conn.rollback();
+            }catch(SQLException e2)
+            {
+                
+            }
+        }
+        finally
+        {
+            if(updateSaldo != null)
+                updateSaldo.close();
+            if(updateArticoli != null)
+                updateArticoli.close();
             
             conn.setAutoCommit(true);
             conn.close();

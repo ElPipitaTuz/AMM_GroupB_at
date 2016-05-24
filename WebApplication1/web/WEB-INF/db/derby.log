@@ -1,7 +1,24 @@
-Mon May 23 16:51:46 CEST 2016 : Apache Derby Network Server - 10.10.2.0 - (1582446) started and ready to accept connections on port 1527
+Tue May 24 08:57:01 CEST 2016 : Apache Derby Network Server - 10.10.2.0 - (1582446) started and ready to accept connections on port 1527
 ----------------------------------------------------------------
-Mon May 23 16:51:47 CEST 2016:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0154-de19-af91-ffff9cf3be15 
+Tue May 24 08:57:02 CEST 2016:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0154-e18d-663e-ffff9cf3be15 
+on database directory /Users/albertotuzzi/NetBeansProjects/Amm21marzo/AMM_GroupB_at/WebApplication1/web/WEB-INF/db/ammdb with class loader sun.misc.Launcher$AppClassLoader@2626b418 
+Loaded from file:/Applications/NetBeans/glassfish-4.1.1/javadb/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_73-b02
+user.dir=/Applications/NetBeans/glassfish-4.1.1/javadb
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.7.5
+derby.system.home=/Users/albertotuzzi/NetBeansProjects/Amm21marzo/AMM_GroupB_at/WebApplication1/web/WEB-INF/db
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Tue May 24 08:57:07 CEST 2016:
+Shutting down instance a816c00e-0154-e18d-663e-ffff9cf3be15 on database directory /Users/albertotuzzi/NetBeansProjects/Amm21marzo/AMM_GroupB_at/WebApplication1/web/WEB-INF/db/ammdb with class loader sun.misc.Launcher$AppClassLoader@2626b418 
+Tue May 24 08:57:07 CEST 2016 Thread[DRDAConnThread_3,5,main] (DATABASE = ammdb), (DRDAID = {2}), Database 'ammdb' shutdown.
+----------------------------------------------------------------
+Tue May 24 08:57:13 CEST 2016:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance 560740aa-0154-e18d-663e-ffff9cf3be15 
 on database directory /Users/albertotuzzi/NetBeansProjects/Amm21marzo/AMM_GroupB_at/WebApplication1/web/WEB-INF/db/ammdb with class loader sun.misc.Launcher$AppClassLoader@2626b418 
 Loaded from file:/Applications/NetBeans/glassfish-4.1.1/javadb/lib/derby.jar
 java.vendor=Oracle Corporation
