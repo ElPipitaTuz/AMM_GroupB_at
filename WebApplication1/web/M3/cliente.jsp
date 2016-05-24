@@ -52,7 +52,7 @@
     <p>CF:</p>
             <p>${cliente.getcf()}</p>
     <p>your credit:</p>
-            <p>${cliente.getSaldo().getSaldo()} $</p>
+            <p>${cliente.getCredito()} $</p>
     
     <p>scroll down and click on "add to cart" to select the items you desire</p>
     
@@ -101,6 +101,7 @@
                 </tr>
             </table>
                 
+                <p>your credit: ${cliente.credito} $ </p>    
             <p> <a href="cliente.html?objCodeCh=${obj.objCode}"> Confirm buying </a> </p>
             </div>
         </c:when>  

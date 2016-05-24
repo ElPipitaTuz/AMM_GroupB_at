@@ -194,21 +194,8 @@ public class BacuccuFactory {
                 clientesql.setcognomeCliente(set.getString("cognome"));
                 clientesql.setusrnm(set.getString("username"));
                 clientesql.setpsswrd(set.getString("password"));
-                // nuova query, corsiAssegnati
-                query = "select saldo.cf_creditore, saldo.credito from saldo "
-                        + "join cliente "
-                        + "on saldo.cf_creditore = ciente.cf "
-                        + "where cliente.cf="+clientesql.getcf();
-                Statement st = conn.createStatement();
-                ResultSet res2 = st.executeQuery(query);
-                while(res2.next())
-                {
-                    Saldo s = new Saldo();
-                    s.setPoss(res2.getInt("cf"));
-                    s.setSaldo(res2.getDouble("credito"));
-                    clientesql.setSaldo(s);
-                }
-                st.close();
+                clientesql.setCredito(set.getDouble("credito"));
+                
                 stmt.close();
                 conn.close();
                 
@@ -219,7 +206,7 @@ public class BacuccuFactory {
         }
         catch(SQLException e)
         {
-            
+           e.printStackTrace(); 
         }
         return null;
     }
@@ -250,21 +237,8 @@ public class BacuccuFactory {
                 venditoresql.setcognomeVenditore(set.getString("cognome"));
                 venditoresql.setusrnm(set.getString("username"));
                 venditoresql.setpsswrd(set.getString("password"));
-                // nuova query, corsiAssegnati
-                query = "select saldo.cf_creditore, saldo.credito from saldo "
-                        + "join venditore "
-                        + "on saldo.cf_creditore = venditore.cf "
-                        + "where venditore.cf="+venditoresql.getcf();
-                Statement st = conn.createStatement();
-                ResultSet res2 = st.executeQuery(query);
-                while(res2.next())
-                {
-                    Saldo s = new Saldo();
-                    s.setPoss(res2.getInt("cf"));
-                    s.setSaldo(res2.getDouble("credito"));
-                    venditoresql.setSaldo(s);
-                }
-                st.close();
+                venditoresql.setCredito(set.getDouble("credito"));
+                
                 stmt.close();
                 conn.close();
                 
@@ -275,7 +249,7 @@ public class BacuccuFactory {
         }
         catch(SQLException e)
         {
-            
+           e.printStackTrace();
         }
         return null;
     }
@@ -306,22 +280,8 @@ public class BacuccuFactory {
                 current.setcognomeCliente(res.getString("cognome"));
                 current.setusrnm(res.getString("username"));
                 current.setpsswrd(res.getString("password"));
+                current.setCredito(res.getDouble("credito"));
                 
-                query = "select saldo.cf_creditore, saldo.credito from saldo "
-                        + "join cliente "
-                        + "on saldo.cf_creditore = cliente.cf "
-                        + "where cliente.cf="+current.getcf();
-                Statement st = conn.createStatement();
-                ResultSet res2 = st.executeQuery(query);
-                while(res2.next())
-                {
-                    Saldo s = new Saldo();
-                    s.setPoss(res2.getInt("cf"));
-                    s.setSaldo(res2.getDouble("credito"));
-                    current.setSaldo(s);
-                }           
-                
-                st.close();
                 stmt.close();
                 conn.close();
                 return current;
@@ -361,22 +321,8 @@ public class BacuccuFactory {
                 current.setcognomeVenditore(res.getString("cognome"));
                 current.setusrnm(res.getString("username"));
                 current.setpsswrd(res.getString("password"));
+                current.setCredito(res.getDouble("credito"));
                 
-                query = "select saldo.cf_creditore, saldo.credito from saldo "
-                        + "join venditore "
-                        + "on saldo.cf_creditore = venditore.cf "
-                        + "where venditore.cf="+current.getcf();
-                Statement st = conn.createStatement();
-                ResultSet res2 = st.executeQuery(query);
-                while(res2.next())
-                {
-                    Saldo s = new Saldo();
-                    s.setPoss(res2.getInt("cf"));
-                    s.setSaldo(res2.getDouble("credito"));
-                    current.setSaldo(s);
-                }           
-                
-                st.close();
                 stmt.close();
                 conn.close();
                 return current;
@@ -443,7 +389,7 @@ public class BacuccuFactory {
             Connection conn = DriverManager.getConnection(connectionString, "albertotuzzi", "lel");
             Statement stmt = conn.createStatement();
             String query = "select * from "
-            + "cliente'";
+            + "cliente ";
             ResultSet set = stmt.executeQuery(query);
             
              // ciclo sulle righe restituite
@@ -456,6 +402,7 @@ public class BacuccuFactory {
                 current.setusrnm(set.getString("username"));
                 current.setpsswrd(set.getString("password"));
                 listaClienti.add(current);
+                
             } 
             
             stmt.close();
@@ -478,7 +425,7 @@ public class BacuccuFactory {
             Connection conn = DriverManager.getConnection(connectionString, "albertotuzzi", "lel");
             Statement stmt = conn.createStatement();
             String query = "select * from "
-            + "venditore'";
+            + "venditore ";
             ResultSet set = stmt.executeQuery(query);
             
              // ciclo sulle righe restituite
@@ -490,7 +437,7 @@ public class BacuccuFactory {
                 current.setcognomeVenditore(set.getString("cognome"));
                 current.setusrnm(set.getString("username"));
                 current.setpsswrd(set.getString("password"));
-                listaVenditori.add(current);
+                listaVenditori.add(current);   
             } 
             
             stmt.close();
@@ -513,7 +460,7 @@ public class BacuccuFactory {
             Connection conn = DriverManager.getConnection(connectionString, "albertotuzzi", "lel");
             Statement stmt = conn.createStatement();
             String query = "select * from "
-            + "articolo'";
+            + "articolo ";
             ResultSet set = stmt.executeQuery(query);
             
              // ciclo sulle righe restituite
@@ -554,7 +501,7 @@ public class BacuccuFactory {
         // Sql 
         String insertart = "insert into articolo "
                 + "(objcode, objname, objurl, objdescr, objprice, objnumber) "
-                + "values (?,?,?,?,?,?)";
+                + "values (?,?,?,?,?,?) ";
         
         try
         {
@@ -611,7 +558,7 @@ public class BacuccuFactory {
         
         // Sql 
         String dropart = "delete from articolo "
-                + "where objcode = ?";
+                + "where objcode = ? ";
         
         try
         {

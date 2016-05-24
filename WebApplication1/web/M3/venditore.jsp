@@ -58,7 +58,7 @@
             <p>CF:</p>
             <p>${venditore.getcf()}</p>
             <p>your credit:</p>
-            <p>${venditore.getSaldo().getSaldo()} $</p>
+            <p>${venditore.getCredito()} $</p>
            
 
          <h3><strong><b>New Object</b></strong></h3>

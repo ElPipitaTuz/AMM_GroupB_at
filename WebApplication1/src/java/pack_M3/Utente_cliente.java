@@ -16,6 +16,7 @@ public class Utente_cliente {
     private int cf;
     private String usrnm;
     private String psswrd;
+    private double credito;
     private Saldo saldo;
     
     //cotruttore
@@ -27,6 +28,7 @@ public class Utente_cliente {
         cf=0;
         usrnm="";
         psswrd="";
+        credito= 0.0;
     
     }
     
@@ -71,6 +73,14 @@ public class Utente_cliente {
 
     public void setpsswrd(String psswrd){
         this.psswrd = psswrd;
+    }
+    
+    public void setCredito(double cr){
+        this.credito = cr;
+        }
+    
+    public double getCredito(){
+        return credito;
     }
     
     public Saldo getSaldo() {

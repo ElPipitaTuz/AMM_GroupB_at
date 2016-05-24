@@ -17,6 +17,7 @@ public class Saldo {
     public Saldo(){
     
         saldo=0.0;
+        cf_poss=0;
         
     }
 

@@ -91,26 +91,22 @@ public class Login extends HttpServlet {
         
         else if (request.getParameter("Submit") != null){            
         
-            ArrayList<Utente_venditore> listaVenditori = BacuccuFactory.getInstance().getVenditoreList();
-            
-            for(Utente_venditore v : listaVenditori)
-            {
-                if(v.getusrnm().equals(username) && v.getpsswrd().equals(password))
-                {   
+            Utente_venditore v = BacuccuFactory.getInstance().getVenditore(username, password);
+            Utente_cliente c = BacuccuFactory.getInstance().getCliente(username, password);
+               
+            if(v != null)
+               {
+                
                     session.setAttribute("logId", true);
                     session.setAttribute("cf", v.getcf());
                     session.setAttribute("venditore", v);
 	            session.setAttribute("Utente", "venditore");
                     request.setAttribute("Seller", true);
                     request.getRequestDispatcher("/M3/venditore.jsp").forward(request, response);
-                }
-            }
-            
-            ArrayList<Utente_cliente> listaClienti = BacuccuFactory.getInstance().getClienteList();
-            
-            for(Utente_cliente c : listaClienti){
                 
-                if(c.getusrnm().equals(username) && c.getpsswrd().equals(password))
+                }
+            
+            if(c != null)
                 {
                     session.setAttribute("logId", true);
                     session.setAttribute("cf", c.getcf());
@@ -120,10 +116,10 @@ public class Login extends HttpServlet {
                     request.setAttribute("listaArticoli", listaArticoli);
                     request.getRequestDispatcher("/M3/cliente.jsp").forward(request, response);
                 }
-            }
+         
             
-                request.setAttribute("error", "Username or Password are incorrect, please try again");
-                request.getRequestDispatcher("/M3/login.jsp").forward(request, response);
+            request.setAttribute("error", "Username or Password are incorrect, please try again");
+            request.getRequestDispatcher("/M3/login.jsp").forward(request, response);
         }
         
  

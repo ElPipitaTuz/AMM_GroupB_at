@@ -67,8 +67,8 @@ public class Cliente extends HttpServlet {
                     else if (request.getParameter("objCodeCh") != null){
                         String codech = request.getParameter("objCodeCh");
                         Articolo o2 = BacuccuFactory.getInstance().getArticolo(codech);
-                        Double cnt = BacuccuFactory.getInstance().getCliente((int) session.getAttribute("cf")).getSaldo().getSaldo();
-                        
+                        Double cnt = BacuccuFactory.getInstance().getCliente((int) session.getAttribute("cf")).getCredito();
+                        request.setAttribute("credit", cnt);
                                                                                         
                         if (cnt > o2.getobjPrice()) {
                         
