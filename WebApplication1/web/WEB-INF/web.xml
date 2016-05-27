@@ -11,6 +11,6 @@
     </session-config>
     
     <welcome-file-list>
-        <welcome-file>../M3/descrizione.html</welcome-file>
+        <welcome-file>/descrizione.html</welcome-file>
     </welcome-file-list>
 </web-app>
