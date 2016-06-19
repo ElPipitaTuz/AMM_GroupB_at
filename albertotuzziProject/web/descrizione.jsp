@@ -1,0 +1,68 @@
+<%-- 
+    Document   : descrizione
+    Created on : Jun 14, 2016, 6:45:38 PM
+    Author     : albertotuzzi
+--%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+
+<html>
+    
+    <head>
+        
+        <title>Homepage</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Alberto Tuzzi">
+        <meta name="keywords" content="e-commerce, football, bacuccu">
+        <link href="CSS/style.css" rel="stylesheet" 
+              type="text/css" media="screen" />
+    </head>
+    
+    <body>
+        
+        <div class="header">
+            <h1><a href="descrizione.jsp"><strong><b>BACUCCU F.C. Official 
+                            Online Store</b></strong></a></h1>
+                <p><b>-making Cagliari 7-football history since 2007-</b></p>
+            <!-- fine intestazione --> 
+        </div> 
+    
+        <div class="scorciatoie">
+            <nav>
+                <p><b>Shortcuts</b></p>
+                <ul>
+                    <li><a href="cliente.html"><strong>Buy</strong></a></li>
+                    <li><a href="login.jsp"><strong>Sign In</strong></a></li>
+                    <li><a href="venditore.jsp"><strong>Sell</strong></a></li>
+                </ul>
+            </nav>
+            <!-- fine shortcuts -->
+        </div>  
+    
+        <div class="contenuto">
+            <h2>About Us</h2>
+                <p>Welcome to the online store of one of the oldest 
+                    7-football club in the city of Cagliari, 
+                    offering you only the best of Bacuccu sportswear.</p>
+
+            <h3>Merchandise</h3> 
+                <p>Find <a href="cliente.jsp"><strong>here
+                    </strong></a> the only 
+                    and original Bacuccu F.C. match jerseys 
+                    and out-of-pitch gadgets.</p>
+            <!-- fine presentazione merchandise -->
+        </div>
+    
+        <div class="riservato">
+            <h4>Reserved Area</h4>
+                <p><a href="login.jsp">sign in</a> or register to access the seller section.</p>
+                <a href="login.jsp"><strong>login here</strong></a>
+              
+        </div>
+        
+    </body>
+
+</html> 
