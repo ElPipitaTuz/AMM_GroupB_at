@@ -111,7 +111,17 @@
                         <br />
                 
                         <button type="submit" name="SubmitSell" 
-                                value="new product">submit</button>
+                                value="new product">Submit</button>
+                        <br />
+                        <button type="submit" name="ObjectMod" 
+                                value="mod product">Update</button>
+                        <br />
+                        <label for="objToDel">Object to Delete code</label>
+                        <input type="number" name="code" 
+                            id="objToDel" value="0" />
+                        
+                        <button type="submit" name="ObjectCanc" 
+                                value="del product">Delete</button>
                 
                     </form>
                 
@@ -120,7 +130,7 @@
                 <c:when test="${riepilogoIns == true}">
             
                     <div>
-                    <h3> Your Object </h3>
+                    <h3> New Object </h3>
                         <table>  
                             <tr>
                                 <th><b>Object</b></th>
@@ -148,6 +158,70 @@
                     </div>
                 
                 </c:when>    
+                    
+                    <c:when test="${riepilogoMod == true}">
+            
+                    <div>
+                    <h3> Updated Object </h3>
+                        <table>  
+                            <tr>
+                                <th><b>Object</b></th>
+                                <th><b>Photo</b></th>
+                                <th><b>Description</b></th>
+                                <th><b>Remaining</b></th>
+                                <th><b>Price</b></th>
+                            </tr>
+                
+                            <tr>
+                                <td> ${ObjectAdded.nome} </td>
+                                <td> <img title="${ObjectAdded.nome}"
+                                          src="${ObjectAdded.URL}" 
+                                    width="70" height="nome}"/> </td>
+                                <td class="Descrizione"> 
+                                    ${ObjectAdded.descr} </td>
+                                <td> ${ObjectAdded.number} </td>
+                                <td> ${ObjectAdded.price} $ </td>
+                            </tr>
+                        </table>
+                
+                        <p> <a href="venditore.jsp"> Confirm and proceed </a> </p>
+                        <c:set var="Seller" scope="session" value="true" />
+                
+                    </div>
+                
+                </c:when>    
+                    
+                <c:when test="${riepilogoCanc == true}">
+            
+                    <div>
+                    <h3> Deleted Object </h3>
+                        <table>  
+                            <tr>
+                                <th><b>Object</b></th>
+                                <th><b>Photo</b></th>
+                                <th><b>Description</b></th>
+                                <th><b>Remaining</b></th>
+                                <th><b>Price</b></th>
+                            </tr>
+                
+                            <tr>
+                                <td> ${ObjectAdded.nome} </td>
+                                <td> <img title="${ObjectAdded.nome}"
+                                          src="${ObjectAdded.URL}" 
+                                    width="70" height="nome}"/> </td>
+                                <td class="Descrizione"> 
+                                    ${ObjectAdded.descr} </td>
+                                <td> ${ObjectAdded.number} </td>
+                                <td> ${ObjectAdded.price} $ </td>
+                            </tr>
+                        </table>
+                
+                        <p> <a href="venditore.jsp"> Confirm and proceed </a> </p>
+                        <c:set var="Seller" scope="session" value="true" />
+                
+                    </div>
+                
+                </c:when>        
                     
             </c:choose>
             
