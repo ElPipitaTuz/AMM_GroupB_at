@@ -86,7 +86,10 @@ public class Venditore extends HttpServlet {
                         nObj.setNome(request.getParameter("name"));
                         nObj.setURL(request.getParameter("URL"));
                         nObj.setDescr(request.getParameter("descr"));
-                                                                    
+                        nObj.setIdV((int) session.getAttribute("cf"));
+                        
+                        UtenteVenditore v = BacuccuFactory.getInstance().catchSeller((int) session.getAttribute("cf"));
+                                                                 
                         try {
                             nObj.setNumber(Integer.parseInt(request.getParameter("number")));
                         } 
@@ -106,7 +109,7 @@ public class Venditore extends HttpServlet {
                         if (nObj.getNome() != null && nObj.getURL() != null && nObj.getDescr() != null &&
                             nObj.getNumber() != 0 && nObj.getPrice() != 0.0) {
                           
-                        
+                            BacuccuFactory.getInstance().addOggetto(nObj);
                             request.setAttribute("ObjectAdded", nObj);
                             session.setAttribute("Seller", false);
                             request.setAttribute("riepilogoIns", true);
@@ -119,6 +122,70 @@ public class Venditore extends HttpServlet {
                             request.setAttribute("noCompilato", true);
                             request.getRequestDispatcher("venditore.jsp").forward(request, response);
                         }
+                    }
+                    
+                    
+                    else if (request.getParameter("ObjectCanc") != null){
+                        int idOggettoC = Integer.parseInt(request.getParameter("code"));
+                        Oggetto objToDel = BacuccuFactory.getInstance().getOggetto(idOggettoC);
+                        BacuccuFactory.getInstance().deleteOggetto(idOggettoC);
+                        
+                        session.setAttribute("Seller", false);
+                        request.setAttribute("ObjectAdded", objToDel);
+                        request.setAttribute("riepilogoCanc", true);
+                        request.getRequestDispatcher("venditore.jsp").forward(request, response);
+                    }
+                    
+                    
+                    else if (request.getParameter("ObjectMod") != null){
+                        Oggetto mObj = new Oggetto();
+                        mObj.setNome(request.getParameter("NomeOggetto"));
+                        mObj.setURL(request.getParameter("Url"));
+                        mObj.setDescr(request.getParameter("Descrizione"));
+                        
+                       
+                        UtenteVenditore v = BacuccuFactory.getInstance().catchSeller((int) session.getAttribute("cf"));
+                        
+                        try {
+                            mObj.setNumber(Integer.parseInt(request.getParameter("Quantita")));
+                        } 
+                        
+                        catch (Exception e) {
+                            mObj.setNumber(0);
+                        }
+
+                        try {
+                            mObj.setPrice(Float.parseFloat(request.getParameter("Prezzo")));
+                        } 
+
+                        catch (Exception e) {
+                            mObj.setPrice(0);
+                        }
+                        
+                        if (mObj.getNome() != null && mObj.getURL() != null && mObj.getDescr() != null &&
+                            mObj.getNumber() != 0 && mObj.getPrice() != 0.0) {
+                          
+                            BacuccuFactory.getInstance().modObject(mObj);
+                            request.setAttribute("ObjectAdded", mObj);
+                            request.setAttribute("riepilogoMod", true);
+                            request.getRequestDispatcher("venditore.jsp").forward(request, response);
+                    
+                        }
+                        else {
+                            request.setAttribute("noCompilato", true);
+                            request.setAttribute("Update", true);
+                            request.getRequestDispatcher("venditore.jsp").forward(request, response);
+                        }
+                    }
+                    
+                    else if(request.getParameter("SubmitVenditore") == null && 
+                            request.getParameter("ObjectMod") == null) {
+                        
+                        UtenteVenditore v = BacuccuFactory.getInstance().catchSeller((int) session.getAttribute("cf"));
+                        
+                        session.setAttribute("venditore", v);
+                        
+                        request.getRequestDispatcher("venditore.jsp").forward(request, response);
                     }
                     
                 
