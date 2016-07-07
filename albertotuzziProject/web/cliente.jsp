@@ -73,7 +73,7 @@
                         <p>scroll down and click on "add to cart" 
                             to select the items you desire</p>
    
-                        <form action="Filter" method="post"> 
+                        <form action="filter.json" method="post"> 
                             <label for="query">filter</label>
                             <input type="text" name="filter" 
                                  id="query" value="" />

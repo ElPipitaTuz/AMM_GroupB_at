@@ -152,7 +152,7 @@
                             </tr>
                         </table>
                 
-                        <p> <a href="venditore.jsp"> Confirm and proceed </a> </p>
+                        <p> <a href="venditore.jsp"> Ok </a> </p>
                         <c:set var="Seller" scope="session" value="true" />
                 
                     </div>
@@ -184,7 +184,7 @@
                             </tr>
                         </table>
                 
-                        <p> <a href="venditore.jsp"> Confirm and proceed </a> </p>
+                        <p> <a href="venditore.jsp"> Ok </a> </p>
                         <c:set var="Seller" scope="session" value="true" />
                 
                     </div>
@@ -216,7 +216,7 @@
                             </tr>
                         </table>
                 
-                        <p> <a href="venditore.jsp"> Confirm and proceed </a> </p>
+                        <p> <a href="venditore.jsp"> Ok </a> </p>
                         <c:set var="Seller" scope="session" value="true" />
                 
                     </div>

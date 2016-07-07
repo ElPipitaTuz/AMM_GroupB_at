@@ -460,7 +460,44 @@ public class BacuccuFactory {
         return null;
     }
     
+    
+    public ArrayList<Oggetto> getListaFilter(String text){
+        ArrayList<Oggetto> listFilter = new ArrayList<>();
+        
+        try {
+            Connection conn = DriverManager.getConnection(connectionString, "albertotuzzi", "alberto");
+            String query = "select * from articolo where articolo.nome LIKE ? OR articolo.descrizione LIKE ? ";
+            
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            String testo = "%" + text + "%";
+            stmt.setString(1, testo);
+            stmt.setString(2, testo);
+            
+            ResultSet res = stmt.executeQuery();
+            
+            while(res.next()){
+                Oggetto oggetto = new Oggetto();
+                oggetto.setCode(res.getInt("id"));
+                oggetto.setNome(res.getString("nome"));
+                oggetto.setPrice(res.getFloat("prezzo"));
+                oggetto.setNumber(res.getInt("pezzi"));
+                oggetto.setDescr(res.getString("descrizione"));
+                oggetto.setURL(res.getString("url"));
+                oggetto.setIdV(res.getInt("idVenditore"));
+                listFilter.add(oggetto);
+            }
+            
+            stmt.close();
+            conn.close();       
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+        return listFilter;
+}
      
+    
     public void setConnectionString(String s)
     {
 	this.connectionString = s;
