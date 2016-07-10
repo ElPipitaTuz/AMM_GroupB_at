@@ -9,7 +9,8 @@
 <!DOCTYPE html>
 
 <html>
-      
+    
+    
     <head>
         <title>Buy</title>
         <meta charset="UTF-8">
@@ -17,7 +18,13 @@
         <meta name="author" content="Alberto Tuzzi">
         <meta name="keywords" content="e-commerce, football, bacuccu">
         <link href="CSS/style.css" rel="stylesheet" type="text/css" media="screen" />
+        
+        <!-- jQuery -->
+        <script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+        <script type="text/javascript" src="js/filter.js"></script>
+      
     </head>
+    
     
     <body>
         <div class="header">
@@ -73,12 +80,12 @@
                         <p>scroll down and click on "add to cart" 
                             to select the items you desire</p>
    
-                        <form action="filter.json" method="post"> 
+                        
                             <label for="query">filter</label>
                             <input type="text" name="filter" 
-                                 id="query" value="" />
+                                 id="query" />
                             <br />
-                        </form>
+                        
     
                     <h3><strong>Our Stuff</strong></h3>
         

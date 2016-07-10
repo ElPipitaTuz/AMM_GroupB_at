@@ -16,7 +16,7 @@ $(document).ready(function(){
             url : "filter.json",
             data:{
                 key: "search",
-                q: text
+                queryText: text
             },
             dataType: "json",
         
@@ -43,19 +43,19 @@ $(document).ready(function(){
             
                 newtrt.setAttribute("class", "intest");
                         
-                var td1t = document.createTextNode("Nome");
+                var td1t = document.createTextNode("Object");
                 newtd1t.appendChild(td1t);
             
-                var td2t = document.createTextNode("Foto");
+                var td2t = document.createTextNode("Photo");
                 newtd2t.appendChild(td2t);
                 
-                var td3t = document.createTextNode("Pezzi disponibili");
+                var td3t = document.createTextNode("Remaining");
                 newtd3t.appendChild(td3t);
                 
-                var td4t = document.createTextNode("Prezzo");
+                var td4t = document.createTextNode("Price");
                 newtd4t.appendChild(td4t);
                 
-                var td5t = document.createTextNode("Link");
+                var td5t = document.createTextNode("Add");
                 newtd5t.appendChild(td5t);
             
                 newtrt.appendChild(newtd1t);
@@ -83,8 +83,8 @@ $(document).ready(function(){
                     var td2 = document.createElement("img");
                     td2.setAttribute("title", "Foto");
                     td2.setAttribute("alt", "Foto " + listaObj[o].nome);
-                    td2.setAttribute("width", "120");
-                    td2.setAttribute("height", "140");
+                    td2.setAttribute("width", "70");
+                    td2.setAttribute("height", "90");
                     td2.setAttribute("src", listaObj[o].url);
                     newtd2.appendChild(td2);
                 
@@ -95,8 +95,8 @@ $(document).ready(function(){
                     newtd4.appendChild(td4);
                 
                     var link = document.createElement("a");
-                    link.setAttribute("href", "Cliente.html?IdOggetto=" + listaObj[o].id);
-                    var registraTxt = document.createTextNode("Link al prodotto");
+                    link.setAttribute("href", "cliente.html?objCode=" + listaObj[o].id);
+                    var registraTxt = document.createTextNode("Add to cart");
                     link.appendChild(registraTxt);
                     newtd5.appendChild(link);
                 
@@ -112,11 +112,11 @@ $(document).ready(function(){
             
             else {
                 $("#listaArticoli").empty();
-                $("#paragrafo").empty();
                 
-                var ad = document.createTextNode("Nessun oggetto trovato");
+                
+                var ad = document.createTextNode("No correspondance");
                
-                $("#paragrafo").append(ad);
+                $("#listaArticoli").append(ad);
             }
         }
     });

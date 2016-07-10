@@ -470,6 +470,7 @@ public class BacuccuFactory {
             
             PreparedStatement stmt = conn.prepareStatement(query);
             
+            
             String testo = "%" + text + "%";
             stmt.setString(1, testo);
             stmt.setString(2, testo);
@@ -477,15 +478,15 @@ public class BacuccuFactory {
             ResultSet res = stmt.executeQuery();
             
             while(res.next()){
-                Oggetto oggetto = new Oggetto();
-                oggetto.setCode(res.getInt("id"));
-                oggetto.setNome(res.getString("nome"));
-                oggetto.setPrice(res.getFloat("prezzo"));
-                oggetto.setNumber(res.getInt("pezzi"));
-                oggetto.setDescr(res.getString("descrizione"));
-                oggetto.setURL(res.getString("url"));
-                oggetto.setIdV(res.getInt("idVenditore"));
-                listFilter.add(oggetto);
+                Oggetto current = new Oggetto();
+                current.setCode(res.getInt("code"));
+                current.setNome(res.getString("nome"));
+                current.setDescr(res.getString("descrizione"));
+                current.setNumber(res.getInt("quant"));
+                current.setURL(res.getString("url"));
+                current.setPrice(res.getFloat("prezzo"));
+                current.setIdV(res.getInt("vend"));
+                listFilter.add(current);
             }
             
             stmt.close();
