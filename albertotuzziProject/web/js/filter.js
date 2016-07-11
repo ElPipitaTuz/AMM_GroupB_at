@@ -5,7 +5,7 @@
  */
 
 
-$(document).ready(function(){
+$(document).ready(function() {
     
     $("#query").keyup(function() {
         
@@ -85,17 +85,17 @@ $(document).ready(function(){
                     td2.setAttribute("alt", "Foto " + listaObj[o].nome);
                     td2.setAttribute("width", "70");
                     td2.setAttribute("height", "90");
-                    td2.setAttribute("src", listaObj[o].url);
+                    td2.setAttribute("src", listaObj[o].getURL());
                     newtd2.appendChild(td2);
                 
-                    var td3 = document.createTextNode(listaObj[o].pezzi);
+                    var td3 = document.createTextNode(listaObj[o].number);
                     newtd3.appendChild(td3);
                 
-                    var td4 = document.createTextNode(listaObj[o].prezzo + " $");
+                    var td4 = document.createTextNode(listaObj[o].price + " $");
                     newtd4.appendChild(td4);
                 
                     var link = document.createElement("a");
-                    link.setAttribute("href", "cliente.html?objCode=" + listaObj[o].id);
+                    link.setAttribute("href", "cliente.html?objCode=" + listaObj[o].code);
                     var registraTxt = document.createTextNode("Add to cart");
                     link.appendChild(registraTxt);
                     newtd5.appendChild(link);
@@ -112,11 +112,11 @@ $(document).ready(function(){
             
             else {
                 $("#listaArticoli").empty();
+                $("#paragrafo").empty();
                 
-                
-                var ad = document.createTextNode("No correspondance");
+                var ad = document.createTextNode("Nessun oggetto trovato");
                
-                $("#listaArticoli").append(ad);
+                $("#paragrafo").append(ad);
             }
         }
     });

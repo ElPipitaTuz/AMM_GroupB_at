@@ -11,11 +11,11 @@
 <json:array>
     <c:forEach var="o" items="${listaObj}">
         <json:object>
-            <json:property name="name" value="${o.nome}"/>
-            <json:property name="price" value="${o.price}"/>
-            <json:property name="code" value="${o.code}"/>
-            <json:property name="number" value="${o.number}"/>
-            <json:property name="url" value="${o.url}"/>
+            <json:property name="name" value="${o.getNome()}"/>
+            <json:property name="price" value="${o.getPrice()}"/>
+            <json:property name="code" value="${o.getCode()}"/>
+            <json:property name="number" value="${o.getNumber()}"/>
+            <json:property name="url" value="${o.getURL()}"/>
         </json:object>
     </c:forEach>
 </json:array>
