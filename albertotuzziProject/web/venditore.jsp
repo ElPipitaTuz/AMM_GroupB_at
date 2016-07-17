@@ -63,7 +63,7 @@
                     <h2><b>Welcome back mr. ${venditore.getNome()} 
                             ${venditore.getCognome()}</b></h2>
                         
-                        <p>CF:</p>
+                        <p>Seller ID:</p>
                         <p>${venditore.getId()}</p>
                         
                         <p>your credit:</p>

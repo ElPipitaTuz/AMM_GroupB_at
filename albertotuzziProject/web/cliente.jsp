@@ -62,7 +62,7 @@
                     <h2><b>Hi ${cliente.getNome()}, 
                             welcome to the Merch Section</b></h2>
     
-                        <p>CF:</p>
+                        <p>Buyer ID:</p>
                         <p>${cliente.getId()}</p>
                         <p>your credit:</p>
                         <p>${cliente.getSaldo()} $</p>
