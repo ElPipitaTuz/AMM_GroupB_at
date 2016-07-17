@@ -43,11 +43,20 @@ a:hover {
 
 form {
   
-    text-align: left;
+    position: absolute;
+    margin-bottom: 50px;
 }
+
+.filtro{
+    
+    position: relative;
+    margin-bottom: 50px;
+}
+
 
 label, input {
     margin-top: 50px;
+    position: relative;
 }
 
 button {

@@ -74,20 +74,25 @@
                         </c:if>
                         
                         <form action="login.html" method="post">
-                        <button type="submit" name="Logout" value="Logout">Sign Out</button>
+                            <label for="log">Logout:</label>
+                            <button id="log" class="logout" type="submit" name="Logout" value="Logout">Sign Out</button>
                         </form>
-                        
-                        <p>scroll down and click on "add to cart" 
+                        <br />
+                        <br />
+                        <br />
+                        <p>Scroll down, or use the filter, and click on "add to cart" 
                             to select the items you desire</p>
    
-                        
+                        <div class="filtro">
                             <label for="query">filter</label>
                             <input type="text" name="filter" 
                                  id="query" />
                             <br />
+                        </div>    
+                        
                         
     
-                    <h3><strong>Our Stuff</strong></h3>
+                    <h3 class="noMatchMessage"><strong>Our Stuff</strong></h3>
         
          
                     <table id="listaArticoli">

@@ -64,13 +64,15 @@
             <h2><strong><b>Sign in</b></strong></h2>
 
             <form action="login.html" method="post"> 
-                <label for="usrnm">ins. username</label>
-                <input type="text" name="usrnm" 
+                <label for="usrnm">Username</label>
+                <input class="inbox" type="text" name="usrnm" 
                     id="usrnm" value="" />
                 <br />
-                <label for="psswrd">ins. password</label>
+                
+                <label class="inbox" for="psswrd">Password</label>
                 <input type="password" name="psswrd" 
                     id="psswrd" value="" />
+                <br />
                 <br />
                 <button type="submit" name="Submit" value="Login">enter</button>  
             </form>

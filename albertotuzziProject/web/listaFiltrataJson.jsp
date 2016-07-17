@@ -1,6 +1,6 @@
 <%-- 
     Document   : listaFiltrataJson
-    Created on : Jul 7, 2016, 4:01:01 PM
+    Created on : Jul 1, 2016, 10:24:45 AM
     Author     : albertotuzzi
 --%>
 
@@ -9,13 +9,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <json:array>
-    <c:forEach var="o" items="${listaObj}">
+    <c:forEach var="current" items="${listaArticoli}">
         <json:object>
-            <json:property name="name" value="${o.getNome()}"/>
-            <json:property name="price" value="${o.getPrice()}"/>
-            <json:property name="code" value="${o.getCode()}"/>
-            <json:property name="number" value="${o.getNumber()}"/>
-            <json:property name="url" value="${o.getURL()}"/>
+            <json:property name="nome" value="${current.nome}"/>
+            <json:property name="price" value="${current.price}"/>
+            <json:property name="code" value="${current.code}"/>
+            <json:property name="number" value="${current.number}"/>
+            <json:property name="url" value="${current.URL}"/>
         </json:object>
     </c:forEach>
 </json:array>

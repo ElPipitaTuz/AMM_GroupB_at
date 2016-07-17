@@ -40,9 +40,9 @@ public class Filter extends HttpServlet {
         
             if(ricerca.equals("search")){
                
-                ArrayList<Oggetto> listaObj = BacuccuFactory.getInstance().getListaFilter(request.getParameter("queryText"));
+                ArrayList<Oggetto> listaArticoli = BacuccuFactory.getInstance().getListaFilter(request.getParameter("queryText"));
                 
-                request.setAttribute("listaObj", listaObj);
+                request.setAttribute("listaArticoli", listaArticoli);
                 
                 response.setContentType("application/json");
                 response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
@@ -50,6 +50,7 @@ public class Filter extends HttpServlet {
                         + "must-revalidate");
                 
                 request.getRequestDispatcher("listaFiltrataJson.jsp").forward(request, response);
+
             }
         
         }

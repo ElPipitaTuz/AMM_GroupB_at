@@ -70,7 +70,8 @@
                         <p>${venditore.getSaldo()} $</p>
                         
                         <form action="login.html" method="post">
-                        <button type="submit" name="Logout" value="Logout">Sign Out</button>
+                            <label for="log">Logout:</label>
+                            <button id="log" class="logout" type="submit" name="Logout" value="Logout">Sign Out</button>
                         </form>
                         
                          <c:if test="${notBuyer!= null}">
@@ -84,44 +85,62 @@
             
                     <form action="venditore.html" method="post"> 
                 
-                        <label for="objname">Object name</label>
+                        <label for="objname">Name</label>
                         <input type="text" name="name" 
                             id="objname" value="" />
                         <br />
+                        <br />
                 
-                        <label for="objURL">Object URL</label>
+                        <label for="objURL">Image URL</label>
                         <input type="url" name="URL" 
                             id="objURL" value="" />
                         <br />
+                        <br />
                 
-                        <label for="objDescr">Object brief description</label>
+                        <label for="objDescr">Brief Description</label>
                         <textarea rows="3" cols="10" 
                             name="descr" id="objDescr"> 
                             describe object </textarea>
                         <br />
+                        <br />
                 
-                        <label for="objPrice">Object price($)</label>
+                        <label for="objPrice">Price ($)</label>
                         <input type="number" name="price" 
                             id="objPrice" value="0" />
                         <br />
+                        <br />
                 
-                        <label for="objNumber">n of objects available</label>
+                        <label for="objNumber">Objects available</label>
                         <input type="number" name="number" 
                             id="objNumber" value="0" />
                         <br />
-                
-                        <button type="submit" name="SubmitSell" 
+                        <br />
+                        
+                        <label for="subObj">Submit this object:</label>
+                        <button id="subObj" type="submit" name="SubmitSell" 
                                 value="new product">Submit</button>
                         <br />
-                        <button type="submit" name="ObjectMod" 
+                        <br />
+                        
+                        <label for="modObj">Update this object:</label>
+                        <button id="modObj" type="submit" name="ObjectMod" 
                                 value="mod product">Update</button>
                         <br />
+                        
+                        <br />
+                        
                         <label for="objToDel">Object to Delete code</label>
                         <input type="number" name="code" 
                             id="objToDel" value="0" />
                         
-                        <button type="submit" name="ObjectCanc" 
+                        <br />
+                        <br />
+                        
+                        <label for="delObj">Delete this object:</label>
+                        <button id="delObj" type="submit" name="ObjectCanc" 
                                 value="del product">Delete</button>
+                        <br />
+                        <br />
                 
                     </form>
                 

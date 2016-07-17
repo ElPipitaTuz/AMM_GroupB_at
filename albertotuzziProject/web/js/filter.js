@@ -33,6 +33,7 @@ $(document).ready(function() {
             
             if (listaObj.length !== 0){
                 $("#listaArticoli").empty();
+                $("#noMatchMessage").empty();
             
                 var newtrt = document.createElement("tr");
                 var newtd1t = document.createElement("th");
@@ -75,7 +76,7 @@ $(document).ready(function() {
                     var newtd4 = document.createElement("td");
                     var newtd5 = document.createElement("td");
                 
-                    newtr.setAttribute("class", "pari");
+                    newtr.setAttribute("class", "dispari");
                                 
                     var td1 = document.createTextNode(listaObj[o].nome);
                     newtd1.appendChild(td1);
@@ -85,7 +86,7 @@ $(document).ready(function() {
                     td2.setAttribute("alt", "Foto " + listaObj[o].nome);
                     td2.setAttribute("width", "70");
                     td2.setAttribute("height", "90");
-                    td2.setAttribute("src", listaObj[o].getURL());
+                    td2.setAttribute("src", listaObj[o].url);
                     newtd2.appendChild(td2);
                 
                     var td3 = document.createTextNode(listaObj[o].number);
@@ -110,14 +111,15 @@ $(document).ready(function() {
                 }
             }
             
-            else {
-                $("#listaArticoli").empty();
-                $("#paragrafo").empty();
-                
-                var ad = document.createTextNode("Nessun oggetto trovato");
-               
-                $("#paragrafo").append(ad);
+            else if (listaObj.length === 0){
+            
+            $("#listaArticoli").empty();
+            $("#noMatchMessage").empty();
+            var noMatch = document.createTextNode("No match with your research!");
+            $("#noMatchMessage").append(noMatch);
+            
             }
+            
         }
     });
 });
